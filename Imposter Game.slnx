@@ -1,0 +1,7 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="ImposterGame.API/ImposterGame.API.csproj" />
+    <Project Path="ImposterGame.Application/ImposterGame.Application.csproj" />
+    <Project Path="ImposterGame.Domain/ImposterGame.Domain.csproj" />
+  </Folder>
+</Solution>
