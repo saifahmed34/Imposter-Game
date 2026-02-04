@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "LHIwAxDE2g8=",
+  "dgSpecHash": "BZnhE593xSw=",
   "success": true,
-  "projectFilePath": "C:\\Users\\saifa\\Documents\\GitHub\\Imposter-Game\\Imposter Game\\ImposterGame.API\\ImposterGame.API.csproj",
+  "projectFilePath": "C:\\Users\\saifa\\Desktop\\Imposter-Game\\Imposter Game\\src\\ImposterGame.API\\ImposterGame.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\saifa\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.2\\microsoft.aspnetcore.openapi.10.0.2.nupkg.sha512",
     "C:\\Users\\saifa\\.nuget\\packages\\microsoft.openapi\\2.0.0\\microsoft.openapi.2.0.0.nupkg.sha512"

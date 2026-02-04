@@ -1,0 +1,25 @@
+﻿using ImposterGame.Application.Interfaces.Repositories;
+using ImpostorGame.Domain.Entities;
+using System;
+using System.Collections.Generic;
+
+namespace ImpostorGame.Infrastructure.Persistence.Repositories
+{
+    public class InMemoryGameRoomRepository : IGameRoomRepository
+    {
+        private readonly Dictionary<Guid, GameRoom> _store = new();
+
+        public GameRoom Get(Guid roomId)
+        {
+            if (_store.TryGetValue(roomId, out var room))
+                return room;
+
+            throw new KeyNotFoundException("Game room not found");
+        }
+
+        public void Save(GameRoom room)
+        {
+            _store[room.Id] = room;
+        }
+    }
+}

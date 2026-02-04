@@ -1,0 +1,58 @@
+﻿using ImposterGame.Application.Services;
+using ImposterGame.Application.Interfaces.Repositories;
+using ImposterGame.Application.Interfaces.Services;
+using ImposterGame.Domain.Entites;
+
+class Program
+{
+    static void Main()
+    {
+        // 1️⃣ Setup repo and provider
+        var repo = new InMemoryGameRoomRepository();
+        var wordProvider = new SimpleWordProvider();
+
+        // 2️⃣ Setup game service
+        var game = new GameService(repo, wordProvider);
+
+        // 3️⃣ Create room
+        var roomId = game.CreateRoom();
+
+        // 4️⃣ Join players
+        game.JoinRoom(roomId, "A");
+        game.JoinRoom(roomId, "B");
+        game.JoinRoom(roomId, "C");
+
+        // 5️⃣ Start the game
+        game.StartGame(roomId);
+
+        // 6️⃣ Begin voting
+        game.BeginVoting(roomId);
+
+        // 7️⃣ Check game state
+        var room = game.GetRoom(roomId);
+        Console.WriteLine($"Room {room.Id} Phase: {room.Phase}");
+        foreach (var p in room.Players)
+            Console.WriteLine($"{p.Name} - HasVoted: {p.HasVoted}");
+    }
+
+// Simple in-test implementations to avoid cross-project namespace mismatches
+class InMemoryGameRoomRepository : IGameRoomRepository
+{
+    private readonly Dictionary<Guid, GameRoom> _store = new();
+
+    public GameRoom Get(Guid roomId)
+    {
+        if (_store.TryGetValue(roomId, out var room))
+            return room;
+
+        throw new KeyNotFoundException("Game room not found");
+    }
+
+    public void Save(GameRoom room)
+    {
+        _store[room.Id] = room;
+    }
+}
+
+
+}

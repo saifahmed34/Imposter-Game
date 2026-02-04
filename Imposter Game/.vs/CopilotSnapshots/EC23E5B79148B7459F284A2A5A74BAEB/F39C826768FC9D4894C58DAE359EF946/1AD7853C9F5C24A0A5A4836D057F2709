@@ -1,0 +1,90 @@
+﻿using ImposterGame.Domain.Entites;
+using ImposterGame.Domain.Enums;
+using ImposterGame.Domain.Rules;
+
+namespace ImpostorGame.Domain.Entities
+{
+    public class GameRoom
+    {
+        public Guid Id { get; } = Guid.NewGuid();
+        public GamePhase Phase { get; private set; } = GamePhase.Waiting;
+
+        private readonly List<Player> _players = new();
+        private readonly List<Vote> _votes = new();
+
+        public IReadOnlyList<Player> Players => _players;
+
+        public void AddPlayer(Player player)
+        {
+            if (Phase != GamePhase.Waiting)
+                throw new InvalidOperationException("Game already started");
+
+            _players.Add(player);
+        }
+
+        public void StartGame(string secretWord)
+        {
+            if (!GameRules.CanStartGame(_players.Count))
+                throw new InvalidOperationException(
+                    $"Player count must be between {GameRules.MinPlayers} and {GameRules.MaxPlayers}"
+                );
+
+            Phase = GamePhase.Playing;
+
+            var impostorIndex = Random.Shared.Next(_players.Count);
+            _players[impostorIndex].IsImpostor = true;
+        }
+
+        public void BeginVoting()
+        {
+            if (Phase != GamePhase.Playing)
+                throw new InvalidOperationException("Cannot start voting now");
+
+            Phase = GamePhase.Voting;
+            _votes.Clear();
+
+            foreach (var player in _players)
+                player.ResetVote();
+        }
+
+        public void SubmitVote(Guid voterId, Guid targetId)
+        {
+            if (Phase != GamePhase.Voting)
+                throw new InvalidOperationException("Voting not started");
+
+            if (_votes.Any(v => v.VoterId == voterId))
+                throw new InvalidOperationException("Player already voted");
+
+            _votes.Add(new Vote(voterId, targetId));
+            _players.Single(p => p.Id == voterId).HasVoted = true;
+        }
+
+        public bool AllVotesSubmitted()
+            => _players.All(p => p.HasVoted);
+
+        public bool ResolveVotes()
+        {
+            if (Phase != GamePhase.Voting)
+                throw new InvalidOperationException("Voting phase not active");
+
+            if (!AllVotesSubmitted())
+                throw new InvalidOperationException("Not all players have voted");
+
+            // Group votes by target player
+            var voteGroups = _votes
+                .GroupBy(v => v.TargetId)
+                .OrderByDescending(g => g.Count())
+                .ToList();
+
+            // Get the player with the most votes
+            var mostVotedPlayerId = voteGroups.First().Key;
+            var mostVotedPlayer = _players.Single(p => p.Id == mostVotedPlayerId);
+
+            Phase = GamePhase.Finished;
+
+            // true = players win, false = impostor wins
+            return mostVotedPlayer.IsImpostor;
+        }
+
+    }
+}

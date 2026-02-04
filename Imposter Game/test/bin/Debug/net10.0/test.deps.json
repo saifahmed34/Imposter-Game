@@ -8,15 +8,40 @@
     ".NETCoreApp,Version=v10.0": {
       "test/1.0.0": {
         "dependencies": {
-          "ImposterGame.Domain": "1.0.0"
+          "ImposterGame.Application": "1.0.0",
+          "ImposterGame.Domain": "1.0.0",
+          "ImpostorGame.Infrastructure": "1.0.0"
         },
         "runtime": {
           "test.dll": {}
         }
       },
+      "ImposterGame.Application/1.0.0": {
+        "dependencies": {
+          "ImposterGame.Domain": "1.0.0"
+        },
+        "runtime": {
+          "ImposterGame.Application.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
       "ImposterGame.Domain/1.0.0": {
         "runtime": {
           "ImposterGame.Domain.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "ImpostorGame.Infrastructure/1.0.0": {
+        "dependencies": {
+          "ImposterGame.Application": "1.0.0",
+          "ImposterGame.Domain": "1.0.0"
+        },
+        "runtime": {
+          "ImpostorGame.Infrastructure.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
@@ -30,7 +55,17 @@
       "serviceable": false,
       "sha512": ""
     },
+    "ImposterGame.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "ImposterGame.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ImpostorGame.Infrastructure/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

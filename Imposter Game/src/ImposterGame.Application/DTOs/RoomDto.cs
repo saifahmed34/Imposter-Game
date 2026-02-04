@@ -1,10 +1,14 @@
-﻿using System;
+﻿using ImposterGame.Domain.Enums;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ImposterGame.Application.DTOs
 {
-    internal class RoomDto
+    public class RoomDto
     {
+        public Guid Id { get; set; }
+        public GamePhase Phase { get; set; }
+        public List<PlayerDto> Players { get; set; }
     }
 }

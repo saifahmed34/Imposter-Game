@@ -1,7 +1,7 @@
-﻿using ImposterGame.Domain.Entites;
-using ImposterGame.Domain.Enums;
+﻿using ImposterGame.Domain.Enums;
+using ImposterGame.Domain.Rules;
 
-namespace ImpostorGame.Domain.Entities
+namespace ImposterGame.Domain.Entites
 {
     public class GameRoom
     {
@@ -23,8 +23,10 @@ namespace ImpostorGame.Domain.Entities
 
         public void StartGame(string secretWord)
         {
-            if (_players.Count < 4 || _players.Count > 8)
-                throw new InvalidOperationException("Player count must be between 4 and 8");
+            if (!GameRules.CanStartGame(_players.Count))
+                throw new InvalidOperationException(
+                    $"Player count must be between {GameRules.MinPlayers} and {GameRules.MaxPlayers}"
+                );
 
             Phase = GamePhase.Playing;
 
@@ -59,7 +61,7 @@ namespace ImpostorGame.Domain.Entities
         public bool AllVotesSubmitted()
             => _players.All(p => p.HasVoted);
 
-        public bool ResolveVotes()
+        public (Guid VotedOutPlayerId, bool ImpostorWasCaught) ResolveVotes()
         {
             if (Phase != GamePhase.Voting)
                 throw new InvalidOperationException("Voting phase not active");
@@ -79,8 +81,8 @@ namespace ImpostorGame.Domain.Entities
 
             Phase = GamePhase.Finished;
 
-            // true = players win, false = impostor wins
-            return mostVotedPlayer.IsImpostor;
+            // true = players win (impostor was caught), false = impostor wins
+            return (mostVotedPlayerId, mostVotedPlayer.IsImpostor);
         }
 
     }

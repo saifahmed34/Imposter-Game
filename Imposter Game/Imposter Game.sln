@@ -1,0 +1,59 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 18
+VisualStudioVersion = 18.2.11415.280 d18.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test", "test\test.csproj", "{0A1E64AE-D0ED-E6EE-0445-2888C87C6BF3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C186EB96-016F-F693-839E-FF3BCCEEF255} = {C186EB96-016F-F693-839E-FF3BCCEEF255}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{827E0CD3-B72D-47B6-A68D-7590B98EB39B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImposterGame.API", "src\ImposterGame.API\ImposterGame.API.csproj", "{F8DD02AC-384C-F336-7763-E631915D6009}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImposterGame.Application", "src\ImposterGame.Application\ImposterGame.Application.csproj", "{215D33B3-CBFF-26C6-2939-EFF1E736138F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImposterGame.Domain", "src\ImposterGame.Domain\ImposterGame.Domain.csproj", "{C186EB96-016F-F693-839E-FF3BCCEEF255}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImpostorGame.Infrastructure", "src\ImpostorGame.Infrastructure\ImpostorGame.Infrastructure.csproj", "{E15E7D46-5AC9-FD9B-A45A-97219EC612D8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0A1E64AE-D0ED-E6EE-0445-2888C87C6BF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A1E64AE-D0ED-E6EE-0445-2888C87C6BF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A1E64AE-D0ED-E6EE-0445-2888C87C6BF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A1E64AE-D0ED-E6EE-0445-2888C87C6BF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8DD02AC-384C-F336-7763-E631915D6009}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8DD02AC-384C-F336-7763-E631915D6009}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8DD02AC-384C-F336-7763-E631915D6009}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8DD02AC-384C-F336-7763-E631915D6009}.Release|Any CPU.Build.0 = Release|Any CPU
+		{215D33B3-CBFF-26C6-2939-EFF1E736138F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{215D33B3-CBFF-26C6-2939-EFF1E736138F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{215D33B3-CBFF-26C6-2939-EFF1E736138F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{215D33B3-CBFF-26C6-2939-EFF1E736138F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C186EB96-016F-F693-839E-FF3BCCEEF255}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C186EB96-016F-F693-839E-FF3BCCEEF255}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C186EB96-016F-F693-839E-FF3BCCEEF255}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C186EB96-016F-F693-839E-FF3BCCEEF255}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E15E7D46-5AC9-FD9B-A45A-97219EC612D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E15E7D46-5AC9-FD9B-A45A-97219EC612D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E15E7D46-5AC9-FD9B-A45A-97219EC612D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E15E7D46-5AC9-FD9B-A45A-97219EC612D8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F8DD02AC-384C-F336-7763-E631915D6009} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
+		{215D33B3-CBFF-26C6-2939-EFF1E736138F} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
+		{C186EB96-016F-F693-839E-FF3BCCEEF255} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
+		{E15E7D46-5AC9-FD9B-A45A-97219EC612D8} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {11A39324-9336-400E-B857-F51345BF2D41}
+	EndGlobalSection
+EndGlobal

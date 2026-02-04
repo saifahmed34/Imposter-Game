@@ -1,0 +1,37 @@
+﻿using ImposterGame.Application.Services;
+using ImposterGame.Domain.Entites;
+using ImpostorGame.Infrastructure.Words;
+using ImpostorGame.Infrastructure.Persistence.Repositories;
+
+class Program
+{
+    static void Main()
+    {
+        // 1️⃣ Setup repo and provider
+        var repo = new InMemoryGameRoomRepository();
+        var wordProvider = new WordProvider();
+
+        // 2️⃣ Setup game service
+        var game = new GameService(repo, wordProvider);
+
+        // 3️⃣ Create room
+        var roomId = game.CreateRoom();
+
+        // 4️⃣ Join players
+        game.JoinRoom(roomId, "A");
+        game.JoinRoom(roomId, "B");
+        game.JoinRoom(roomId, "C");
+
+        // 5️⃣ Start the game
+        game.StartGame(roomId);
+
+        // 6️⃣ Begin voting
+        game.BeginVoting();
+
+        // 7️⃣ Check game state
+        var room = game.GetRoom(roomId);
+        Console.WriteLine($"Room {room.Id} Phase: {room.Phase}");
+        foreach (var p in room.Players)
+            Console.WriteLine($"{p.Name} - HasVoted: {p.HasVoted}");
+    }
+}

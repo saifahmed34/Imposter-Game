@@ -4,7 +4,10 @@ using System.Text;
 
 namespace ImposterGame.Application.DTOs
 {
-    internal class PlayerDto
+    public class PlayerDto
     {
+        public Guid Id { get; set; }
+        public string Name { get; set; }
+        public bool HasVoted { get; set; }
     }
 }

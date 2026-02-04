@@ -1,0 +1,11 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace ImposterGame.Application.Interfaces.Services
+{
+    public interface IWordProvider
+    {
+        string GetRandomWord();
+    }
+}

@@ -8,7 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ImposterGame.Domain\ImposterGame.Domain.csproj" />
+  
+    <ProjectReference Include="..\src\ImposterGame.Application\ImposterGame.Application.csproj" />
+  
+    <ProjectReference Include="..\src\ImposterGame.Domain\ImposterGame.Domain.csproj" />
+  
+    <ProjectReference Include="..\src\ImpostorGame.Infrastructure\ImpostorGame.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
