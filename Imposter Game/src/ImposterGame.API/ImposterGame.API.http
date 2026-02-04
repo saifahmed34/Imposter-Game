@@ -1,0 +1,6 @@
+@ImposterGame.API_HostAddress = http://localhost:5289
+
+GET {{ImposterGame.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
