@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
@@ -8,6 +8,13 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ImposterGame.Application\ImposterGame.Application.csproj" />
+    <ProjectReference Include="..\ImposterGame.Domain\ImposterGame.Domain.csproj" />
+    <ProjectReference Include="..\ImpostorGame.Infrastructure\ImpostorGame.Infrastructure.csproj" />
+    
   </ItemGroup>
 
 </Project>

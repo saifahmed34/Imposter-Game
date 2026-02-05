@@ -40,3 +40,13 @@ C:\Users\saifa\Desktop\Imposter-Game\Imposter Game\test\bin\Debug\net10.0\Impost
 C:\Users\saifa\Desktop\Imposter-Game\Imposter Game\test\bin\Debug\net10.0\ImpostorGame.Infrastructure.dll
 C:\Users\saifa\Desktop\Imposter-Game\Imposter Game\test\bin\Debug\net10.0\ImposterGame.Application.pdb
 C:\Users\saifa\Desktop\Imposter-Game\Imposter Game\test\bin\Debug\net10.0\ImpostorGame.Infrastructure.pdb
+C:\Users\saifa\Desktop\Imposter-Game\Imposter Game\test\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\saifa\Desktop\Imposter-Game\Imposter Game\test\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\saifa\Desktop\Imposter-Game\Imposter Game\test\bin\Debug\net10.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\saifa\Desktop\Imposter-Game\Imposter Game\test\bin\Debug\net10.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\saifa\Desktop\Imposter-Game\Imposter Game\test\bin\Debug\net10.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\saifa\Desktop\Imposter-Game\Imposter Game\test\bin\Debug\net10.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\saifa\Desktop\Imposter-Game\Imposter Game\test\bin\Debug\net10.0\Microsoft.Extensions.Logging.dll
+C:\Users\saifa\Desktop\Imposter-Game\Imposter Game\test\bin\Debug\net10.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\saifa\Desktop\Imposter-Game\Imposter Game\test\bin\Debug\net10.0\Microsoft.Extensions.Options.dll
+C:\Users\saifa\Desktop\Imposter-Game\Imposter Game\test\bin\Debug\net10.0\Microsoft.Extensions.Primitives.dll

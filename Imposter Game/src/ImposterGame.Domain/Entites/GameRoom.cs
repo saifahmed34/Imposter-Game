@@ -11,7 +11,12 @@ namespace ImposterGame.Domain.Entites
         private readonly List<Player> _players = new();
         private readonly List<Vote> _votes = new();
 
-        public IReadOnlyList<Player> Players => _players;
+        public IEnumerable<Player> Players => _players;
+        public IEnumerable<Vote> Votes => _votes;
+
+
+
+
 
         public void AddPlayer(Player player)
         {
