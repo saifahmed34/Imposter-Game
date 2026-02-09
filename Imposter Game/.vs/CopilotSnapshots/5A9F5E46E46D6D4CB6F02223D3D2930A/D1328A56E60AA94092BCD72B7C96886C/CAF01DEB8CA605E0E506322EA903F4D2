@@ -1,0 +1,29 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace ImposterGame.Domain.Entites
+{
+    public class Player
+    {
+        public Guid Id { get; set; } = Guid.NewGuid();
+        public string Name { get; set; }
+        public bool IsImpostor { get; internal set; }
+        public bool HasVoted { get; internal set; }
+
+        // EF navigation back to room
+        public Guid RoomId { get; set; }
+        public GameRoom Room { get; set; }
+
+        public Player() { }
+
+        public Player(string name)
+        {
+            Name = name;
+        }
+        public void ResetVote()
+        {
+            HasVoted = false;
+        }
+    }
+}

@@ -1,5 +1,6 @@
-﻿using ImposterGame.Application.Interfaces.Services;
-using Microsoft.AspNetCore.Http;
+﻿using System;
+using ImposterGame.API.Requests;
+using ImposterGame.Application.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ImposterGame.API.Controllers
@@ -9,17 +10,38 @@ namespace ImposterGame.API.Controllers
     public class VoteController : ControllerBase
     {
         private readonly IGameService _gameService;
+
         public VoteController(IGameService gameService)
         {
             _gameService = gameService;
         }
+
         [HttpPost("{roomId}/submit")]
-        public IActionResult SubmitVote(Guid roomId, [FromQuery] Guid voterId, [FromQuery] Guid targetId)
+        public IActionResult SubmitVote(Guid roomId, [FromBody] VoteRequest voteRequest)
         {
-            var result = _gameService.SubmitVote(roomId, voterId, targetId);
-            if (result == null)
-                return Ok("Vote recorded. Waiting for other players.");
-            return Ok(result);
+            try
+            {
+                var result = _gameService.SubmitVote(roomId, voteRequest.VoterId, voteRequest.TargetId);
+
+                if (result == null)
+                {
+                    return Ok(new { message = "Vote recorded, waiting for other players" });
+                }
+
+                return Ok(new
+                {
+                    votedOutPlayerId = result.VotedOutPlayerId,
+                    impostorWasCaught = result.ImpostorWasCaught
+                });
+            }
+            catch (KeyNotFoundException)
+            {
+                return NotFound();
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

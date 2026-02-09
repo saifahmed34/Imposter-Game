@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Debug - Imposter Game</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .debug-output {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-height: 500px;
+            overflow-y: auto;
+            margin: 20px 0;
+        }
+
+        .json-key {
+            color: #9cdcfe;
+        }
+
+        .json-string {
+            color: #ce9178;
+        }
+
+        .json-number {
+            color: #b5cea8;
+        }
+
+        .json-boolean {
+            color: #569cd6;
+        }
+
+        .copy-btn {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 API Debug Tool</h1>
+        <p class="subtitle">Test your API responses</p>
+
+        <div class="card">
+            <div class="input-group">
+                <label for="roomIdDebug">Room ID (from session or manual)</label>
+                <input type="text" id="roomIdDebug" placeholder="Enter room ID">
+            </div>
+
+            <button class="btn btn-primary" onclick="fetchRoomData()">Fetch Room Data</button>
+            <button class="btn btn-secondary" onclick="clearOutput()">Clear Output</button>
+
+            <div id="debugOutput" class="debug-output">
+                Waiting for API call...
+            </div>
+
+            <button class="btn btn-secondary copy-btn" onclick="copyOutput()">Copy Output</button>
+            <button class="btn btn-secondary" onclick="goBack()">Back to Game</button>
+        </div>
+
+        <div id="messageArea"></div>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="utils.js"></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            // Try to load room ID from session
+            const roomId = sessionStorage.getItem('roomId');
+            if (roomId) {
+                document.getElementById('roomIdDebug').value = roomId;
+            }
+        });
+
+        async function fetchRoomData() {
+            const roomId = document.getElementById('roomIdDebug').value.trim();
+            
+            if (!roomId) {
+                showMessage('Please enter a room ID', 'error');
+                return;
+            }
+
+            const output = document.getElementById('debugOutput');
+            output.innerHTML = 'Fetching data...\n\n';
+
+            try {
+                const url = `${API_BASE_URL}/api/Room/${roomId}`;
+                output.innerHTML += `URL: ${url}\n`;
+                output.innerHTML += `Method: GET\n`;
+                output.innerHTML += `Time: ${new Date().toISOString()}\n\n`;
+                output.innerHTML += '--- RAW RESPONSE ---\n';
+
+                const response = await fetch(url, {
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                output.innerHTML += `Status: ${response.status} ${response.statusText}\n`;
+                output.innerHTML += `Headers:\n`;
+                response.headers.forEach((value, key) => {
+                    output.innerHTML += `  ${key}: ${value}\n`;
+                });
+                output.innerHTML += '\n--- RESPONSE BODY ---\n';
+
+                const text = await response.text();
+                output.innerHTML += `Raw text length: ${text.length} characters\n\n`;
+                
+                if (!text || text.trim() === '') {
+                    output.innerHTML += 'EMPTY RESPONSE\n';
+                    showMessage('API returned empty response', 'error');
+                    return;
+                }
+
+                output.innerHTML += 'Raw text:\n';
+                output.innerHTML += text + '\n\n';
+
+                try {
+                    const data = JSON.parse(text);
+                    output.innerHTML += '--- PARSED JSON ---\n';
+                    output.innerHTML += JSON.stringify(data, null, 2) + '\n\n';
+
+                    // Extract useful information
+                    output.innerHTML += '--- ANALYSIS ---\n';
+                    
+                    const room = data.room || data;
+                    output.innerHTML += `Room ID: ${room.id}\n`;
+                    output.innerHTML += `Phase: ${room.phase}\n`;
+                    output.innerHTML += `Players count: ${room.players?.length || 0}\n\n`;
+
+                    if (room.players && room.players.length > 0) {
+                        output.innerHTML += 'Players:\n';
+                        room.players.forEach((player, index) => {
+                            output.innerHTML += `\nPlayer ${index + 1}:\n`;
+                            output.innerHTML += `  ID: ${player.id}\n`;
+                            output.innerHTML += `  Name: ${player.name}\n`;
+                            output.innerHTML += `  Has Voted: ${player.hasVoted}\n`;
+                            
+                            // Check all possible field names
+                            output.innerHTML += `  isImposter: ${player.isImposter}\n`;
+                            output.innerHTML += `  IsImposter: ${player.IsImposter}\n`;
+                            output.innerHTML += `  role: ${player.role}\n`;
+                            output.innerHTML += `  Role: ${player.Role}\n`;
+                            output.innerHTML += `  word: ${player.word}\n`;
+                            output.innerHTML += `  Word: ${player.Word}\n`;
+                            output.innerHTML += `  secretWord: ${player.secretWord}\n`;
+                            output.innerHTML += `  SecretWord: ${player.SecretWord}\n`;
+                            
+                            // Show all fields
+                            output.innerHTML += '  All fields: ' + Object.keys(player).join(', ') + '\n';
+                        });
+                    }
+
+                    // Check room-level word
+                    output.innerHTML += '\nRoom-level word fields:\n';
+                    output.innerHTML += `  word: ${room.word}\n`;
+                    output.innerHTML += `  Word: ${room.Word}\n`;
+                    output.innerHTML += `  secretWord: ${room.secretWord}\n`;
+                    output.innerHTML += `  SecretWord: ${room.SecretWord}\n`;
+                    output.innerHTML += '  All room fields: ' + Object.keys(room).join(', ') + '\n';
+
+                    showMessage('Data fetched successfully! Check the output below.', 'success');
+                } catch (parseError) {
+                    output.innerHTML += 'JSON PARSE ERROR:\n';
+                    output.innerHTML += parseError.message + '\n';
+                    showMessage('Failed to parse JSON response', 'error');
+                }
+
+            } catch (error) {
+                output.innerHTML += '\nERROR:\n';
+                output.innerHTML += error.message + '\n';
+                output.innerHTML += error.stack + '\n';
+                console.error('Fetch error:', error);
+                showMessage(`Failed to fetch: ${error.message}`, 'error');
+            }
+        }
+
+        function clearOutput() {
+            document.getElementById('debugOutput').innerHTML = 'Waiting for API call...';
+        }
+
+        function copyOutput() {
+            const output = document.getElementById('debugOutput').textContent;
+            copyToClipboard(output);
+        }
+
+        function goBack() {
+            const roomId = sessionStorage.getItem('roomId');
+            if (roomId) {
+                window.location.href = 'game.html';
+            } else {
+                window.location.href = 'index.html';
+            }
+        }
+    </script>
+</body>
+</html>

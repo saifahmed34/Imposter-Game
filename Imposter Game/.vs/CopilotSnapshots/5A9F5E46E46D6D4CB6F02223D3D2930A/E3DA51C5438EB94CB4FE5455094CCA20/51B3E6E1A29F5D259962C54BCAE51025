@@ -1,0 +1,56 @@
+﻿using ImposterGame.API.Hubs;
+using ImposterGame.Application.Interfaces.Services;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
+
+namespace ImposterGame.API.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class RoomController : ControllerBase
+    {
+        private readonly IGameService _gameService;
+        private readonly IHubContext<GameHub> _hubContext;
+        private readonly ImposterGame.Application.Interfaces.Repositories.IGameRoomRepository _roomRepo;
+
+        public RoomController(IGameService gameService, IHubContext<GameHub> hubContext, ImposterGame.Application.Interfaces.Repositories.IGameRoomRepository roomRepo)
+        {
+            _gameService = gameService;
+            _hubContext = hubContext;
+            _roomRepo = roomRepo;
+        }
+        
+        [HttpPost]
+        public IActionResult CreateRoom()
+        {
+            var roomId = _gameService.CreateRoom();
+            return Ok(new { roomId });
+        }
+        [HttpPost("{roomId}/join")]
+        public IActionResult JoinRoom(Guid roomId, [FromBody] string playerName)
+        {
+            _gameService.JoinRoom(roomId, playerName);
+            return Ok(new { });
+
+        }
+        [HttpPost("{roomId}/start")]
+        public async Task<IActionResult> StartGameAsync(Guid roomId)
+        {
+            _gameService.StartGame(roomId);
+            await _hubContext.Clients
+            .Group(roomId.ToString())
+            .SendAsync("GameStarted");
+            return Ok();
+        }
+        [HttpPost("{roomId}/start-vote")]
+        public async Task <IActionResult> BeginVoting(Guid roomId)
+        {
+            _gameService.BeginVoting(roomId);
+            await _hubContext.Clients
+            .Group(roomId.ToString())
+            .SendAsync("VotingStarted");
+           
+            return Ok();
+        }
+    }
+}

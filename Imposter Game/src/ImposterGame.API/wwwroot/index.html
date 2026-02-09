@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imposter Game - Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🎭 Imposter Game</h1>
+        <p class="subtitle">Find the imposter among us!</p>
+
+        <div class="card">
+            <div class="input-group">
+                <label for="playerName">Enter Your Name</label>
+                <input type="text" id="playerName" placeholder="Your name" autofocus>
+            </div>
+
+            <button class="btn btn-primary" onclick="createRoom()">Create New Room</button>
+            <button class="btn btn-secondary" onclick="goToJoin()">Join Existing Room</button>
+        </div>
+
+        <div id="messageArea"></div>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="utils.js"></script>
+    <script>
+
+        // Load player name from storage if exists
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedName = localStorage.getItem('playerName');
+            if (savedName) {
+                document.getElementById('playerName').value = savedName;
+            }
+        });
+
+        async function createRoom() {
+            const playerName = document.getElementById('playerName').value.trim();
+            
+            if (!playerName) {
+                showMessage('Please enter your name', 'error');
+                return;
+            }
+
+            try {
+                showMessage('Creating room...', 'info');
+                
+                const response = await fetch(`${API_BASE_URL}/api/room`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await parseResponse(response);
+                const roomId = data.room?.id || data.roomId || data.id || data;
+
+                // Save player name
+                localStorage.setItem('playerName', playerName);
+                
+                // Auto-join the created room
+                await joinRoomWithId(roomId, playerName);
+                
+            } catch (error) {
+                console.error('Error creating room:', error);
+                showMessage(`Failed to create room: ${error.message}`, 'error');
+            }
+        }
+
+        async function joinRoomWithId(roomId, playerName) {
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/room/${roomId}/join`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({ playerName })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await parseResponse(response);
+                const playerId = data.playerId || data.id || data;
+
+                // Save to session storage
+                sessionStorage.setItem('roomId', roomId);
+                sessionStorage.setItem('playerId', playerId);
+                sessionStorage.setItem('playerName', playerName);
+
+                showMessage('Joined room successfully!', 'success');
+                
+                // Redirect to lobby
+                setTimeout(() => {
+                    window.location.href = 'lobby.html';
+                }, 500);
+                
+            } catch (error) {
+                console.error('Error joining room:', error);
+                showMessage(`Failed to join room: ${error.message}`, 'error');
+            }
+        }
+
+        function goToJoin() {
+            const playerName = document.getElementById('playerName').value.trim();
+            
+            if (!playerName) {
+                showMessage('Please enter your name first', 'error');
+                return;
+            }
+
+            localStorage.setItem('playerName', playerName);
+            window.location.href = 'join.html';
+        }
+    </script>
+</body>
+</html>

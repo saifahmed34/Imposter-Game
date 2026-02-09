@@ -1,0 +1,52 @@
+﻿using ImposterGame.API.Hubs;
+using ImposterGame.Application.Interfaces.Repositories;
+using ImposterGame.Application.Interfaces.Services;
+using ImposterGame.Infrastructure.Persistence.Repositories;
+using ImpostorGame.Application.Services;
+using ImpostorGame.Infrastructure.Words;
+
+
+var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddSignalR();
+
+// Add services to the container.
+
+builder.Services.AddControllers();
+// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+builder.Services.AddOpenApi();
+
+builder.Services.AddSingleton<IGameRoomRepository, InMemoryGameRoomRepository>();
+builder.Services.AddSingleton<IWordProvider, WordProvider>();
+builder.Services.AddSingleton<IGameService, GameService>();
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:8080") // frontend URL
+                  .AllowAnyHeader()
+                  .AllowAnyMethod()
+                  .AllowCredentials(); // important for SignalR
+        });
+});
+
+
+var app = builder.Build();
+app.UseCors(MyAllowSpecificOrigins);
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.MapOpenApi();
+}
+app.MapHub<GameHub>("/gamehub");
+//app.UseDefaultFiles();
+//app.UseStaticFiles();
+app.UseHttpsRedirection();
+
+app.UseAuthorization();
+
+app.MapControllers();
+
+app.Run();

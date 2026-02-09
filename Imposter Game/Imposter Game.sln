@@ -1,13 +1,13 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 18
-VisualStudioVersion = 18.2.11415.280 d18.0
+VisualStudioVersion = 18.2.11415.280
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test", "test\test.csproj", "{0A1E64AE-D0ED-E6EE-0445-2888C87C6BF3}"
-	ProjectSection(ProjectDependencies) = postProject
-		{C186EB96-016F-F693-839E-FF3BCCEEF255} = {C186EB96-016F-F693-839E-FF3BCCEEF255}
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{827E0CD3-B72D-47B6-A68D-7590B98EB39B}"
+	ProjectSection(SolutionItems) = preProject
+		src\ImposterGame.API\wwwroot\app.js = src\ImposterGame.API\wwwroot\app.js
+		src\ImposterGame.API\wwwroot\game.html = src\ImposterGame.API\wwwroot\game.html
+		src\ImposterGame.API\wwwroot\index.html = src\ImposterGame.API\wwwroot\index.html
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImposterGame.API", "src\ImposterGame.API\ImposterGame.API.csproj", "{F8DD02AC-384C-F336-7763-E631915D6009}"
 EndProject
@@ -17,16 +17,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImposterGame.Domain", "src\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImpostorGame.Infrastructure", "src\ImpostorGame.Infrastructure\ImpostorGame.Infrastructure.csproj", "{E15E7D46-5AC9-FD9B-A45A-97219EC612D8}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "any", "any", "{B3749F23-B0F8-49DB-8825-DE9AFFF94D4D}"
+	ProjectSection(SolutionItems) = preProject
+		src\ImposterGame.API\wwwroot\app.js = src\ImposterGame.API\wwwroot\app.js
+		src\ImposterGame.API\wwwroot\game.html = src\ImposterGame.API\wwwroot\game.html
+		src\ImposterGame.API\wwwroot\index.html = src\ImposterGame.API\wwwroot\index.html
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0A1E64AE-D0ED-E6EE-0445-2888C87C6BF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0A1E64AE-D0ED-E6EE-0445-2888C87C6BF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0A1E64AE-D0ED-E6EE-0445-2888C87C6BF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0A1E64AE-D0ED-E6EE-0445-2888C87C6BF3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F8DD02AC-384C-F336-7763-E631915D6009}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F8DD02AC-384C-F336-7763-E631915D6009}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8DD02AC-384C-F336-7763-E631915D6009}.Release|Any CPU.ActiveCfg = Release|Any CPU

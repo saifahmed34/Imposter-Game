@@ -1,7 +1,6 @@
-﻿using ImposterGame.Domain.Enums;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using ImposterGame.Domain.Enums;
 
 namespace ImposterGame.Application.DTOs
 {
@@ -9,6 +8,6 @@ namespace ImposterGame.Application.DTOs
     {
         public Guid Id { get; set; }
         public GamePhase Phase { get; set; }
-        public List<PlayerDto> Players { get; set; }
+        public List<PlayerDto> Players { get; set; } = new();
     }
 }

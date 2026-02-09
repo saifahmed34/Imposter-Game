@@ -1,25 +1,25 @@
-using ImposterGame.Application.Interfaces.Repositories;
-using ImposterGame.Domain.Entites;
-using System;
-using System.Collections.Generic;
+//using ImposterGame.Application.Interfaces.Repositories;
+//using ImposterGame.Domain.Entites;
+//using System;
+//using System.Collections.Generic;
 
-namespace ImposterGame.Infrastructure.Persistence.Repositories
-{
-    public class InMemoryGameRoomRepository : IGameRoomRepository
-    {
-        private readonly Dictionary<Guid, GameRoom> _store = new();
+//namespace ImposterGame.Infrastructure.Persistence.Repositories
+//{
+//    public class InMemoryGameRoomRepository : IGameRoomRepository
+//    {
+//        private readonly Dictionary<Guid, GameRoom> _store = new();
 
-        public GameRoom Get(Guid roomId)
-        {
-            if (_store.TryGetValue(roomId, out var room))
-                return room;
+//        public GameRoom Get(Guid roomId)
+//        {
+//            if (_store.TryGetValue(roomId, out var room))
+//                return room;
 
-            throw new KeyNotFoundException("Game room not found");
-        }
+//            throw new KeyNotFoundException("Game room not found");
+//        }
 
-        public void Save(GameRoom room)
-        {
-            _store[room.Id] = room;
-        }
-    }
-}
+//        public void Save(GameRoom room)
+//        {
+//            _store[room.Id] = room;
+//        }
+//    }
+//}

@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ImposterGame.Domain.Enums
+﻿namespace ImposterGame.Domain.Enums
 {
     public enum GamePhase
     {
-        Waiting,
-        Playing,
-        Voting,
-        Finished
+        Waiting = 0,
+        Playing = 1,
+        Voting = 2,
+        Finished = 3
     }
-
 }

@@ -1,13 +1,14 @@
-﻿using ImposterGame.Domain.Entites;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+using ImposterGame.Domain.Entites;
 
 namespace ImposterGame.Application.Interfaces.Repositories
 {
     public interface IGameRoomRepository
     {
-       public GameRoom Get(Guid roomId);
-       public void Save(GameRoom room);
+        GameRoom? GetWithPlayers(Guid roomId);
+        Player? GetPlayer(Guid playerId);
+        void Add(GameRoom room);
+        void Update(GameRoom room);
+        void SaveChanges();
     }
 }

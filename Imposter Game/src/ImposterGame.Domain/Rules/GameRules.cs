@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ImposterGame.Domain.Rules
+﻿namespace ImposterGame.Domain.Rules
 {
-    public class GameRules
+    public static class GameRules
     {
-        public const int MinPlayers = 4;
-        public const int MaxPlayers = 8;
+        public const int MinPlayers = 2;
+        public const int MaxPlayers = 10;
 
         public static bool CanStartGame(int playerCount)
-         => playerCount >= MinPlayers && playerCount <= MaxPlayers;
+        {
+            return playerCount >= MinPlayers && playerCount <= MaxPlayers;
+        }
     }
 }

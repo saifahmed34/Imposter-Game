@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game - Imposter Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🎭 Game In Progress</h1>
+        <p class="subtitle">Discuss and find the imposter!</p>
+
+        <div class="card">
+            <div class="room-info">
+                <h3>Your Information</h3>
+                <div class="role-display" id="roleDisplay">
+                    <div class="role-label">Your Role:</div>
+                    <div class="role-badge" id="roleBadge">Loading...</div>
+                </div>
+                <div class="word-display" id="wordDisplay">
+                    <div class="word-label">Your Word:</div>
+                    <div class="word-value" id="wordValue">???</div>
+                </div>
+                <div class="role-hint" id="roleHint"></div>
+            </div>
+
+            <div class="players-list" id="playersList">
+                <h4>Players:</h4>
+                <div id="playersContainer"></div>
+            </div>
+
+            <button class="btn btn-primary" id="startVoteBtn" onclick="startVoting()">Start Voting Phase</button>
+            <button class="btn btn-secondary" onclick="leaveRoom()">Leave Game</button>
+        </div>
+
+        <div id="messageArea"></div>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="utils.js"></script>
+    <script>
+        let roomId = null;
+        let playerId = null;
+        let refreshInterval = null;
+        let isRefreshing = false;
+        let hasLoadedGameData = false;
+
+        window.addEventListener('DOMContentLoaded', async () => {
+            // Check if user is logged in
+            roomId = sessionStorage.getItem('roomId');
+            playerId = sessionStorage.getItem('playerId');
+            
+            if (!roomId || !playerId) {
+                showMessage('No room found. Redirecting...', 'error');
+                setTimeout(() => window.location.href = 'index.html', 1000);
+                return;
+            }
+            
+            // Initial load
+            await loadRoomData();
+            
+            // Start auto-refresh every 3 seconds
+            refreshInterval = setInterval(async () => {
+                if (!isRefreshing) {
+                    await loadRoomData();
+                }
+            }, 3000);
+        });
+
+        window.addEventListener('beforeunload', () => {
+            if (refreshInterval) {
+                clearInterval(refreshInterval);
+            }
+        });
+
+        async function loadRoomData() {
+            if (isRefreshing) return;
+            isRefreshing = true;
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/Room/${roomId}`, {
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await parseResponse(response);
+                const room = data.room || data;
+                
+                updateUI(room);
+                
+                // Check if voting has started (phase changed to 2)
+                if (room.phase && room.phase >= 2) {
+                    clearInterval(refreshInterval);
+                    showMessage('Voting phase started...', 'success');
+                    setTimeout(() => {
+                        window.location.href = 'voting.html';
+                    }, 500);
+                }
+                
+            } catch (error) {
+                console.error('Error loading room data:', error);
+            } finally {
+                isRefreshing = false;
+            }
+        }
+
+        function updateUI(room) {
+            const players = room.players || [];
+            
+            // Find current player's data (C# returns lowercase 'id')
+            const currentPlayer = players.find(p => p.id === playerId);
+            
+            if (currentPlayer && !hasLoadedGameData) {
+                hasLoadedGameData = true;
+                
+                // C# uses PascalCase: IsImposter and Word
+                const isImposter = currentPlayer.isImposter === true;
+                const word = currentPlayer.word || null;
+                
+                const roleBadge = document.getElementById('roleBadge');
+                const roleHint = document.getElementById('roleHint');
+                const wordValue = document.getElementById('wordValue');
+                
+                if (isImposter) {
+                    roleBadge.textContent = 'IMPOSTER';
+                    roleBadge.className = 'role-badge role-imposter';
+                    wordValue.textContent = '???';
+                    roleHint.innerHTML = '<strong>⚠️ You are the IMPOSTER!</strong><br>You don\'t know the secret word. Try to blend in and figure it out from the discussion!';
+                    roleHint.className = 'role-hint hint-imposter';
+                } else {
+                    roleBadge.textContent = 'CIVILIAN';
+                    roleBadge.className = 'role-badge role-normal';
+                    
+                    if (word) {
+                        wordValue.textContent = word;
+                        roleHint.innerHTML = `<strong>✓ You are a CIVILIAN!</strong><br>Your secret word is: <strong>${word}</strong><br>Find the imposter who doesn't know this word!`;
+                    } else {
+                        wordValue.textContent = 'Loading...';
+                        roleHint.innerHTML = `<strong>✓ You are a CIVILIAN!</strong><br>Waiting for word assignment...`;
+                    }
+                    roleHint.className = 'role-hint hint-normal';
+                }
+            }
+            
+            // Update players list
+            const playersContainer = document.getElementById('playersContainer');
+            if (players.length > 0) {
+                playersContainer.innerHTML = players.map(p => `
+                    <div class="player-item">
+                        <span>${p.name || 'Unknown'}</span>
+                        ${p.id === playerId ? '<span class="badge badge-you">You</span>' : ''}
+                    </div>
+                `).join('');
+            }
+        }
+
+        async function startVoting() {
+            try {
+                showMessage('Starting voting phase...', 'info');
+                
+                const response = await fetch(`${API_BASE_URL}/api/Room/${roomId}/start-vote`, {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                showMessage('Voting started!', 'success');
+                
+                // Stop refresh and redirect
+                clearInterval(refreshInterval);
+                setTimeout(() => {
+                    window.location.href = 'voting.html';
+                }, 500);
+                
+            } catch (error) {
+                console.error('Error starting voting:', error);
+                showMessage(`Failed to start voting: ${error.message}`, 'error');
+            }
+        }
+
+        function leaveRoom() {
+            clearInterval(refreshInterval);
+            sessionStorage.clear();
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

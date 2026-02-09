@@ -1,0 +1,61 @@
+﻿using ImposterGame.API.Hubs;
+using ImposterGame.Application.Interfaces.Repositories;
+using ImposterGame.Application.Interfaces.Services;
+using ImpostorGame.Application.Services;
+using ImpostorGame.Infrastructure.Persistence.Repositories;
+using ImpostorGame.Infrastructure.Words;
+using ImpostorGame.Infrastructure.Persistence.DbContexts;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Builder;
+
+
+var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddSignalR();
+
+// Add services to the container.
+
+builder.Services.AddControllers();
+// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+builder.Services.AddOpenApi();
+builder.Services.AddEndpointsApiExplorer(); // Already in most templates
+builder.Services.AddSwaggerGen();
+
+
+builder.Services.AddDbContext<ImpostorGameDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddScoped<IGameRoomRepository, GameRoomRepository>();
+builder.Services.AddSingleton<IWordProvider, WordProvider>();
+builder.Services.AddScoped<IGameService, GameService>();
+
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(builder =>
+    {
+        builder.WithOrigins("http://localhost:8080") // React app URL
+               .AllowAnyHeader()
+               .AllowAnyMethod()
+               .AllowCredentials();
+    });
+});
+
+
+
+var app = builder.Build();
+app.UseCors();
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+
+}
+app.MapHub<GameHub>("/gamehub");
+
+app.UseHttpsRedirection();
+
+app.UseAuthorization();
+
+app.MapControllers();
+
+app.Run();

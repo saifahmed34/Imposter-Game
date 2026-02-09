@@ -1,19 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ImposterGame.Domain.Entites
 {
     public class Vote
     {
-        public Guid VoterId { get; }
-        public Guid TargetId { get; }
+        public Guid Id { get; set; }
+        public Guid VoterId { get; set; }
+        public Guid TargetId { get; set; }
+        public Guid RoomId { get; set; }
 
-        public Vote(Guid voterId, Guid targetId)
+        // Navigation properties
+        public GameRoom? Room { get; set; }
+
+        public Vote() { }
+
+        public Vote(Guid voterId, Guid targetId) : this()
         {
             VoterId = voterId;
             TargetId = targetId;
         }
     }
-
 }

@@ -1,0 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace ImposterGame.Domain.Entites
+{
+    public class Vote
+    {
+        public Guid Id { get; set; } = Guid.NewGuid();
+
+        public Guid VoterId { get; set; }
+        public Guid TargetId { get; set; }
+
+        public Vote() { }
+
+        public Vote(Guid voterId, Guid targetId)
+        {
+            VoterId = voterId;
+            TargetId = targetId;
+        }
+    }
+
+}

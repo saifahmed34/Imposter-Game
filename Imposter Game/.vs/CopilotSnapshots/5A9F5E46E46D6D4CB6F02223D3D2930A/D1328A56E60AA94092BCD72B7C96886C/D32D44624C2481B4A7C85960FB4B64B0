@@ -1,0 +1,170 @@
+﻿// Simple frontend client to test the API + SignalR
+const apiBase = `${window.location.origin}/api`; // serves the same origin where API runs
+
+let roomId = localStorage.getItem('roomId') || '';
+let playerName = localStorage.getItem('playerName') || '';
+let playerId = localStorage.getItem('playerId') || '';
+let connection = null;
+
+async function createRoom() {
+  playerName = document.getElementById('playerName').value.trim();
+  if (!playerName) return alert('Enter player name');
+
+  const res = await fetch(`${apiBase}/room`, { method: 'POST' });
+  const json = await res.json();
+  roomId = json.roomId;
+  localStorage.setItem('roomId', roomId);
+
+  // join the room after creating
+  await joinRoomInternal(roomId, playerName);
+  window.location.href = 'game.html';
+}
+
+async function joinRoom(isRedirect = true) {
+  playerName = document.getElementById('playerName').value.trim();
+  roomId = roomId || document.getElementById('roomId').value.trim();
+  if (!playerName || !roomId) return alert('roomId and playerName required');
+
+  await joinRoomInternal(roomId, playerName);
+
+  localStorage.setItem('roomId', roomId);
+  localStorage.setItem('playerName', playerName);
+
+  if (isRedirect) window.location.href = 'game.html';
+}
+
+async function joinRoomInternal(room, name) {
+  await fetch(`${apiBase}/room/${room}/join`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ playerName: name }) // backend expects { PlayerName }
+  });
+
+  // fetch room to discover assigned player id
+  const roomRes = await fetch(`${apiBase}/room/${room}`);
+  const roomJson = await roomRes.json();
+  const players = (roomJson.room && roomJson.room.players) || [];
+  const me = players.find(p => p.name === name);
+  if (me) {
+    playerId = me.id;
+    localStorage.setItem('playerId', playerId);
+  }
+}
+
+function setupSignalR() {
+  if (connection) return;
+  connection = new signalR.HubConnectionBuilder()
+    .withUrl('/gamehub')
+    .withAutomaticReconnect()
+    .build();
+
+  connection.start()
+    .then(() => {
+      // join SignalR group so server can push updates
+      if (roomId && playerName) connection.invoke('JoinRoom', roomId, playerName).catch(console.error);
+    })
+    .catch(console.error);
+
+  connection.on('PlayersUpdated', players => {
+    renderPlayers(players);
+  });
+
+  connection.on('GameStarted', () => alert('Game started'));
+  connection.on('VotingStarted', () => alert('Voting started'));
+}
+
+function renderPlayers(players) {
+  const playersList = document.getElementById('players');
+  if (!playersList) return;
+  playersList.innerHTML = '';
+  (players || []).forEach(p => {
+    const li = document.createElement('li');
+    li.textContent = p.name;
+
+    if (p.id !== playerId) {
+      const voteBtn = document.createElement('button');
+      voteBtn.textContent = 'Vote';
+      voteBtn.onclick = () => castVote(p.id);
+      li.appendChild(voteBtn);
+    } else {
+      const span = document.createElement('span');
+      span.textContent = ' (you)';
+      span.style.marginLeft = '8px';
+      li.appendChild(span);
+    }
+
+    playersList.appendChild(li);
+  });
+}
+
+async function startGame() {
+  if (!roomId) return alert('No roomId');
+  await fetch(`${apiBase}/room/${roomId}/start`, { method: 'POST' });
+}
+
+async function beginVoting() {
+  if (!roomId) return alert('No roomId');
+  await fetch(`${apiBase}/room/${roomId}/start-vote`, { method: 'POST' });
+}
+
+async function castVote(targetId) {
+  if (!roomId || !playerId) return alert('Missing roomId or playerId');
+
+  const res = await fetch(`${apiBase}/vote/${roomId}/submit`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ voterId: playerId, targetId })
+  });
+
+  const payload = await res.json();
+  console.log('vote response', payload);
+  if (payload && payload.votedOutPlayerId) {
+    // show result area (adapt to response shape from backend)
+    document.getElementById('result').innerText = JSON.stringify(payload);
+  } else if (typeof payload === 'string') {
+    // server sometimes returns plain message
+    document.getElementById('result').innerText = payload;
+  }
+}
+
+// when on game page, initialize
+if (window.location.pathname.endsWith('game.html')) {
+  roomId = localStorage.getItem('roomId');
+  playerName = localStorage.getItem('playerName');
+  playerId = localStorage.getItem('playerId');
+
+  document.getElementById('roomTitle').innerText = 'Room: ' + (roomId || '');
+  setupSignalR();
+
+  // initial load and periodic refresh
+  (async function loadPlayersLoop() {
+    if (roomId) {
+      try {
+        const r = await fetch(`${apiBase}/room/${roomId}`);
+        const j = await r.json();
+        const players = (j.room && j.room.players) || [];
+        renderPlayers(players);
+
+        // ensure we have playerId saved (in case join response didn't return it)
+        if (!playerId && playerName) {
+          const me = players.find(p => p.name === playerName);
+          if (me) {
+            playerId = me.id;
+            localStorage.setItem('playerId', playerId);
+          }
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }
+    setTimeout(loadPlayersLoop, 3000);
+  })();
+}
+
+// expose functions to index.html global scope
+window.createRoom = createRoom;
+window.joinRoom = joinRoom;
+window.startGame = startGame;
+window.beginVoting = beginVoting;
+window.castVote = castVote;
+window.setupSignalR = setupSignalR;
