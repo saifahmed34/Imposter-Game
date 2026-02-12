@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@layer base {
+  :root {
+    --background: 220 20% 10%;
+    --foreground: 210 20% 92%;
+
+    --card: 220 18% 13%;
+    --card-foreground: 210 20% 92%;
+
+    --popover: 220 18% 13%;
+    --popover-foreground: 210 20% 92%;
+
+    --primary: 175 80% 50%;
+    --primary-foreground: 220 20% 8%;
+
+    --secondary: 220 15% 20%;
+    --secondary-foreground: 210 20% 85%;
+
+    --muted: 220 15% 18%;
+    --muted-foreground: 215 15% 55%;
+
+    --accent: 175 60% 40%;
+    --accent-foreground: 210 20% 92%;
+
+    --destructive: 0 72% 55%;
+    --destructive-foreground: 210 20% 95%;
+
+    --success: 145 65% 42%;
+    --success-foreground: 145 80% 95%;
+
+    --imposter: 0 72% 55%;
+    --imposter-foreground: 0 0% 100%;
+
+    --civilian: 145 65% 42%;
+    --civilian-foreground: 145 80% 95%;
+
+    --warning: 45 90% 55%;
+    --warning-foreground: 45 90% 10%;
+
+    --border: 220 15% 22%;
+    --input: 220 15% 18%;
+    --ring: 175 80% 50%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 220 20% 8%;
+    --sidebar-foreground: 210 20% 92%;
+    --sidebar-primary: 175 80% 50%;
+    --sidebar-primary-foreground: 220 20% 8%;
+    --sidebar-accent: 220 15% 18%;
+    --sidebar-accent-foreground: 210 20% 92%;
+    --sidebar-border: 220 15% 22%;
+    --sidebar-ring: 175 80% 50%;
+
+    --glow-primary: 0 0 20px hsl(175 80% 50% / 0.3);
+    --glow-imposter: 0 0 20px hsl(0 72% 55% / 0.3);
+    --glow-success: 0 0 20px hsl(145 65% 42% / 0.3);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  code, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer utilities {
+  .glow-primary {
+    box-shadow: var(--glow-primary);
+  }
+  .glow-imposter {
+    box-shadow: var(--glow-imposter);
+  }
+  .glow-success {
+    box-shadow: var(--glow-success);
+  }
+  .text-glow {
+    text-shadow: 0 0 10px hsl(175 80% 50% / 0.5);
+  }
+}
