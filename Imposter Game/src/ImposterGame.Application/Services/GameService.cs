@@ -107,6 +107,7 @@ namespace ImposterGame.Application.Services
                     HasVoted = p.HasVoted,
                     IsImposter = p.IsImposter,
                     Word = p.Word
+                    
                 }).ToList()
             };
         }

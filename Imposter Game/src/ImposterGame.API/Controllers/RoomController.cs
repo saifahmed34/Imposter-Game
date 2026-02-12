@@ -28,7 +28,22 @@ namespace ImposterGame.API.Controllers
             try
             {
                 var room = _gameService.GetRoom(roomId);
-                return Ok(new { room });
+
+                // Get votes from the database
+                var votes = _context.Votes
+                    .Where(v => v.RoomId == roomId)
+                    .ToList()
+                    .Select(v => new {
+                        VoterId = v.VoterId,
+                        TargetId = v.TargetId
+                    })
+                    .ToList();
+
+                return Ok(new
+                {
+                    room = room,
+                    votes = votes
+                });
             }
             catch (KeyNotFoundException)
             {
@@ -48,28 +63,50 @@ namespace ImposterGame.API.Controllers
         {
             try
             {
-                _gameService.JoinRoom(roomId, joinRoomRequest.PlayerName);
+                // normalize requested name
+                var baseName = (joinRoomRequest?.PlayerName ?? "").Trim();
+                if (string.IsNullOrWhiteSpace(baseName))
+                    baseName = "Player";
 
-                // Get the updated room to find the player that was just added
+                // get current room and existing player names
                 var room = _gameService.GetRoom(roomId);
+                if (room == null)
+                    return NotFound($"Room {roomId} not found.");
+
+                var existingNames = new HashSet<string>(
+                    room.Players.Select(p => p.Name ?? string.Empty),
+                    StringComparer.OrdinalIgnoreCase
+                );
+
+                // pick a unique name: if baseName exists, append numbers starting from 1
+                var finalName = baseName;
+                var suffix = 1;
+                while (existingNames.Contains(finalName))
+                {
+                    finalName = baseName + suffix; // e.g. "Alice1"
+                    suffix++;
+                }
+
+                // now add the player with the unique name
+                _gameService.JoinRoom(roomId, finalName);
+
+                // retrieve updated room and the newly added player
+                room = _gameService.GetRoom(roomId);
                 var addedPlayer = room.Players
-                    .OrderByDescending(p => p.Name == joinRoomRequest.PlayerName)
-                    .FirstOrDefault(p => p.Name == joinRoomRequest.PlayerName);
+                    .FirstOrDefault(p => string.Equals(p.Name, finalName, StringComparison.OrdinalIgnoreCase));
 
                 if (addedPlayer != null)
                 {
-                    return Ok(new { playerId = addedPlayer.Id });  // ✅ Returns player ID
+                    return Ok(new { playerId = addedPlayer.Id, playerName = finalName });
                 }
 
-                return Ok();
+                // fallback: success but couldn't find the added player (shouldn't happen)
+                return Ok(new { playerName = finalName });
             }
-            catch (KeyNotFoundException)
+            catch (Exception ex)
             {
-                return NotFound();
-            }
-            catch (InvalidOperationException ex)
-            {
-                return BadRequest(ex.Message);
+                // log exception as appropriate (not shown here)
+                return StatusCode(500, "An error occurred while joining the room.");
             }
         }
 

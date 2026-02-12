@@ -20,8 +20,17 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "any", "any", "{B3749F23-B0F8-49DB-8825-DE9AFFF94D4D}"
 	ProjectSection(SolutionItems) = preProject
 		src\ImposterGame.API\wwwroot\app.js = src\ImposterGame.API\wwwroot\app.js
+		src\ImposterGame.API\wwwroot\config.js = src\ImposterGame.API\wwwroot\config.js
+		src\ImposterGame.API\wwwroot\debug.html = src\ImposterGame.API\wwwroot\debug.html
 		src\ImposterGame.API\wwwroot\game.html = src\ImposterGame.API\wwwroot\game.html
 		src\ImposterGame.API\wwwroot\index.html = src\ImposterGame.API\wwwroot\index.html
+		src\ImposterGame.API\wwwroot\join.html = src\ImposterGame.API\wwwroot\join.html
+		src\ImposterGame.API\wwwroot\lobby.html = src\ImposterGame.API\wwwroot\lobby.html
+		src\ImposterGame.API\wwwroot\README.md = src\ImposterGame.API\wwwroot\README.md
+		src\ImposterGame.API\wwwroot\results.html = src\ImposterGame.API\wwwroot\results.html
+		src\ImposterGame.API\wwwroot\style.css = src\ImposterGame.API\wwwroot\style.css
+		src\ImposterGame.API\wwwroot\utils.js = src\ImposterGame.API\wwwroot\utils.js
+		src\ImposterGame.API\wwwroot\voting.html = src\ImposterGame.API\wwwroot\voting.html
 	EndProjectSection
 EndProject
 Global
