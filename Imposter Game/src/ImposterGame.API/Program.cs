@@ -26,7 +26,7 @@ builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
     {
-        policy.WithOrigins("http://localhost:8080")
+        policy.WithOrigins("http://localhost:8080", "https://tftmwqlm-8080.euw.devtunnels.ms")
               .AllowAnyHeader()
               .AllowAnyMethod()
               .AllowCredentials();
