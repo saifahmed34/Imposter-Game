@@ -5,6 +5,7 @@ A real-time multiplayer **Impostor Game** built with:
 - ⚙️ ASP.NET Core (Clean Architecture)
 - 🗄 SQL Server + Entity Framework Core
 - 🔄 SignalR (Real-time updates)
+- 🌐 React + TypeScript (Frontend)
 
 ---
 
