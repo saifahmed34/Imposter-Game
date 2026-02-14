@@ -109,6 +109,23 @@ namespace ImposterGame.API.Controllers
                 return StatusCode(500, "An error occurred while joining the room.");
             }
         }
+        [HttpPost("{roomId}/leave")]
+        public IActionResult LeaveRoom(Guid roomId, [FromBody] LeaveRoomRequest leaveRoomRequest)
+        {
+            try
+            {
+                _gameService.LeaveRoom(roomId, leaveRoomRequest.PlayerId);
+                return Ok();
+            }
+            catch (KeyNotFoundException)
+            {
+                return NotFound();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
 
         [HttpPost("{roomId}/start")]
         public async Task<IActionResult> StartGameAsync(Guid roomId)

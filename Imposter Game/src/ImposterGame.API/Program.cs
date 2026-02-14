@@ -26,14 +26,15 @@ builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
     {
-        policy.WithOrigins("http://localhost:8080", "https://tftmwqlm-8080.euw.devtunnels.ms")
+        policy.WithOrigins()
               .AllowAnyHeader()
               .AllowAnyMethod()
-              .AllowCredentials();
+              .AllowCredentials().SetIsOriginAllowed(origin => true);
     });
 });
 
 var app = builder.Build();
+app.UseRouting();
 
 app.UseCors();
 

@@ -11,6 +11,6 @@ namespace ImposterGame.Application.Interfaces.Services
         void BeginVoting(Guid roomId);
         VoteResultDto SubmitVote(Guid roomId, Guid voterId, Guid targetId);
         RoomDto GetRoom(Guid roomId);
-        void LeaveRoom(Guid playerId);
+        void LeaveRoom(Guid playerId,Guid PlayerId);
     }
 }

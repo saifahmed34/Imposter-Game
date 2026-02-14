@@ -112,7 +112,7 @@ namespace ImposterGame.Application.Services
             };
         }
 
-        public void LeaveRoom(Guid playerId)
+        public void LeaveRoom(Guid roomid,Guid playerId)
         {
             var player = _roomRepo.GetPlayer(playerId);
             if (player == null)

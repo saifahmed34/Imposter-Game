@@ -54,11 +54,38 @@ const Lobby = () => {
     }
   };
 
-  const leaveRoom = () => {
+const leaveRoom = async () => {
+  try {
+    const roomId = sessionStorage.getItem("roomId");
+    const playerId = sessionStorage.getItem("playerId");
+
+    if (!roomId || !playerId) return;
+
+    await leaveRoomApi(roomId, playerId);
+
     if (intervalRef.current) clearInterval(intervalRef.current);
+
     sessionStorage.clear();
     navigate("/");
-  };
+  } catch (err) {
+    console.error("Error leaving room:", err);
+  }
+};
+
+
+   async function leaveRoomApi(roomId: string, playerId: string) {
+  await fetch(`${API_BASE_URL}/api/Room/${roomId}/leave`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      playerId: playerId
+    })
+  });
+}
+
+
 
   const phaseNames = ["Waiting", "Playing", "Voting", "Ended"];
 
