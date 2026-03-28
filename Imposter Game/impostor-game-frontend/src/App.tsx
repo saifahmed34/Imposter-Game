@@ -10,6 +10,7 @@ import Game from "./pages/Game";
 import Voting from "./pages/Voting";
 import Results from "./pages/Results";
 import NotFound from "./pages/NotFound";
+import Chat from "./pages/Chat";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +27,8 @@ const App = () => (
           <Route path="/game" element={<Game />} />
           <Route path="/voting" element={<Voting />} />
           <Route path="/results" element={<Results />} />
+          <Route path="/chat" element={<Chat />} />
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

@@ -156,6 +156,7 @@ const leaveRoom = async () => {
           <Button onClick={leaveRoom} variant="outline" className="w-full border-border text-foreground hover:bg-secondary">
             Leave Game
           </Button>
+          <Button onClick={() => navigate("/chat")}>Go to Chat</Button>
         </div>
       </div>
     </div>

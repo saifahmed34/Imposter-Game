@@ -28,5 +28,10 @@ namespace ImposterGame.API.Hubs
             // Notify everyone in room about updated players
             await Clients.Group(roomId).SendAsync("PlayersUpdated", room.Players);
         }
+
+        public async Task SendMessage(string roomId, string user, string message)
+        {
+            await Clients.Group(roomId).SendAsync("ReceiveMessage", user, message);
+        }
     }
 }
