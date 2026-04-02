@@ -172,5 +172,24 @@ namespace ImposterGame.API.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+
+        [HttpPost("{roomId}/reset")]
+        public async Task<IActionResult> ResetRoom(Guid roomId)
+        {
+            try
+            {
+                _gameService.ResetRoom(roomId);
+                await _hubContext.Clients.Group(roomId.ToString()).SendAsync("RoomReset");
+                return Ok();
+            }
+            catch (KeyNotFoundException)
+            {
+                return NotFound();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
     }
 }

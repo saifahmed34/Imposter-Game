@@ -66,6 +66,18 @@ namespace ImposterGame.Application.Services
             _roomRepo.SaveChanges();
         }
 
+        public void ResetRoom(Guid roomId)
+        {
+            var room = _roomRepo.GetWithPlayers(roomId);
+            if (room == null)
+                throw new KeyNotFoundException("Room not found");
+
+            room.ResetRoom();
+
+            _roomRepo.Update(room);
+            _roomRepo.SaveChanges();
+        }
+
         public VoteResultDto SubmitVote(Guid roomId, Guid voterId, Guid targetId)
         {
             var room = _roomRepo.GetWithPlayers(roomId);

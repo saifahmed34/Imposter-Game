@@ -60,10 +60,51 @@ const Results = () => {
     }
   };
 
+  const playAgain = async () => {
+    try {
+      if (!roomId) throw new Error("No roomId available");
+      // Reset room on the server so it returns to Waiting and new players can join.
+      const res = await fetch(`${API_BASE_URL}/api/Room/${roomId}/reset`, { method: "POST", headers: { Accept: "application/json" } });
+      if (!res.ok) {
+        const err = await parseResponse(res).catch(() => null);
+        throw new Error(err?.message || `HTTP ${res.status}`);
+      }
+      toast.success("Room reset. Returning to lobby.");
+      navigate("/lobby");
+    } catch (error: any) {
+      toast.error(`Failed to go to lobby: ${error?.message || error}`);
+    }
+  };
+
   const resultStyles = {
     win: "bg-civilian/15 border-civilian/40 text-foreground",
     lose: "bg-imposter/15 border-imposter/40 text-foreground",
     draw: "bg-warning/15 border-warning/40 text-foreground",
+  };
+
+  const leaveAndGoHome = async () => {
+    try {
+      if (!roomId || !playerId) {
+        sessionStorage.clear();
+        navigate("/");
+        return;
+      }
+      const res = await fetch(`${API_BASE_URL}/api/Room/${roomId}/leave`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({ playerId }),
+      });
+      if (!res.ok) {
+        const err = await parseResponse(res);
+        throw new Error(err?.message || `HTTP ${res.status}`);
+      }
+      toast.success("Left room");
+    } catch (error: any) {
+      toast.error(`Failed to leave room: ${error?.message || error}`);
+    } finally {
+      sessionStorage.clear();
+      navigate("/");
+    }
   };
 
   return (
@@ -83,10 +124,10 @@ const Results = () => {
 
           <PlayerList players={players} currentPlayerId={playerId} voteCounts={voteCounts} showImposter />
 
-          <Button onClick={() => { sessionStorage.removeItem("roomId"); navigate("/"); }} className="w-full bg-primary text-primary-foreground hover:bg-primary/80 font-semibold">
+          <Button onClick={playAgain} className="w-full bg-primary text-primary-foreground hover:bg-primary/80 font-semibold">
             Play Again
           </Button>
-          <Button onClick={() => { sessionStorage.clear(); navigate("/"); }} variant="outline" className="w-full border-border text-foreground hover:bg-secondary">
+          <Button onClick={leaveAndGoHome} variant="outline" className="w-full border-border text-foreground hover:bg-secondary">
             Back to Home
           </Button>
         </div>

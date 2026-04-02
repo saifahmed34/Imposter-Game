@@ -30,9 +30,11 @@ const Lobby = () => {
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await parseResponse(res);
       const room = data.room || data;
+      const phaseValue = room.phase ?? 0;
       setPlayers(room.players || []);
-      setPhase(room.phase || 0);
-      if (room.phase && room.phase > 0) {
+      setPhase(phaseValue);
+      // Only navigate to the game view when the room is actively Playing.
+      if (phaseValue === 1) {
         if (intervalRef.current) clearInterval(intervalRef.current);
         toast.success("Game starting...");
         setTimeout(() => navigate("/game"), 500);

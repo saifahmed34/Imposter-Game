@@ -11,7 +11,13 @@ namespace ImpostorGame.Infrastructure.Words
             "football", "guitar", "house", "island", "jacket",
             "kite", "laptop", "mountain", "notebook", "ocean",
             "piano", "queen", "rainbow", "sunset", "tree",
-            "umbrella", "violin", "waterfall", "xylophone", "yacht", "zebra"
+            "teacher", "doctor", "engineer", "artist",
+            "school", "hospital", "restaurant", "cinema",
+            "phone", "laptop", "keyboard", "mouse",
+            "football", "basketball", "tennis",
+            "beach", "desert", "mountain", "river",
+            "pizza", "burger", "pasta", "rice",
+            "cat", "dog", "lion", "elephant","naif","omar ehab","reda"
         };
 
         public string GetRandomWord()

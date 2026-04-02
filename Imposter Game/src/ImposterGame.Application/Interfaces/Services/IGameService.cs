@@ -9,6 +9,7 @@ namespace ImposterGame.Application.Interfaces.Services
         void JoinRoom(Guid roomId, string playerName);
         void StartGame(Guid roomId);
         void BeginVoting(Guid roomId);
+        void ResetRoom(Guid roomId);
         VoteResultDto SubmitVote(Guid roomId, Guid voterId, Guid targetId);
         RoomDto GetRoom(Guid roomId);
         void LeaveRoom(Guid playerId,Guid PlayerId);

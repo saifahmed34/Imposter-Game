@@ -98,5 +98,17 @@ namespace ImposterGame.Domain.Entites
             if (player != null)
                 Players.Remove(player);
         }
+
+        public void ResetRoom()
+        {
+            Phase = GamePhase.Waiting;
+            Votes.Clear();
+            foreach (var p in Players)
+            {
+                p.IsImposter = false;
+                p.Word = null;
+                p.HasVoted = false;
+            }
+        }
     }
 }
