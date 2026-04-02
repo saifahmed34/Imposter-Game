@@ -11,6 +11,7 @@ import Voting from "./pages/Voting";
 import Results from "./pages/Results";
 import NotFound from "./pages/NotFound";
 import Chat from "./pages/Chat";
+import UnloadHandler from "./components/UnloadHandler";
 
 const queryClient = new QueryClient();
 
@@ -19,6 +20,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      <UnloadHandler />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />

@@ -64,6 +64,17 @@ const Voting = () => {
       const playersList = room.players || [];
       setPlayers(playersList);
 
+      // If players drop to 2 or fewer during voting, return to lobby
+      if (playersList.length <= 2) {
+        if (intervalRef.current) {
+          clearInterval(intervalRef.current);
+          intervalRef.current = null;
+        }
+        toast.error("Not enough players remaining. Returning to lobby...");
+        setTimeout(() => navigate("/lobby"), 500);
+        return;
+      }
+
       // Update local voted state for current player from server
       const currentPlayer = playersList.find(
         (p: any) => normalizeId(p.id || p.Id) === normalizeId(playerId)

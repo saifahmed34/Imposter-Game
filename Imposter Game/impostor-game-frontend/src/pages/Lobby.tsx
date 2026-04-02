@@ -33,11 +33,19 @@ const Lobby = () => {
       const phaseValue = room.phase ?? 0;
       setPlayers(room.players || []);
       setPhase(phaseValue);
-      // Only navigate to the game view when the room is actively Playing.
+      // Only navigate to the game view when the room is actively Playing
+      // and there are more than 2 players. This avoids looping between
+      // lobby and game when players drop to 2 or fewer.
       if (phaseValue === 1) {
-        if (intervalRef.current) clearInterval(intervalRef.current);
-        toast.success("Game starting...");
-        setTimeout(() => navigate("/game"), 500);
+        const playerCount = (room.players || []).length;
+        if (playerCount > 2) {
+          if (intervalRef.current) clearInterval(intervalRef.current);
+          toast.success("Game starting...");
+          setTimeout(() => navigate("/game"), 500);
+        } else {
+          // update players state so UI reflects current count
+          setPlayers(room.players || []);
+        }
       }
     } catch (error) {
       console.error("Error loading room:", error);
@@ -46,6 +54,11 @@ const Lobby = () => {
 
   const startGame = async () => {
     try {
+      if ((players || []).length <= 2) {
+        toast.error("Not enough players to start. Need at least 3 players.");
+        return;
+      }
+
       const res = await fetch(`${API_BASE_URL}/api/Room/${roomId}/start`, { method: "POST", headers: { Accept: "application/json" } });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       toast.success("Game started!");
@@ -117,7 +130,11 @@ const leaveRoom = async () => {
 
           <PlayerList players={players} currentPlayerId={playerId} />
 
-          <Button onClick={startGame} disabled={players.length < 2} className="w-full bg-success text-success-foreground hover:bg-success/80 font-semibold">
+          <Button
+            onClick={startGame}
+            disabled={players.length <= 2}
+            className="w-full bg-success text-success-foreground hover:bg-success/80 font-semibold"
+          >
             Start Game
           </Button>
           <Button onClick={leaveRoom} variant="outline" className="w-full border-border text-foreground hover:bg-secondary">

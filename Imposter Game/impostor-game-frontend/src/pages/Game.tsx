@@ -35,6 +35,14 @@ const Game = () => {
       const pls = room.players || [];
       setPlayers(pls);
 
+      // If players drop to 2 or fewer while in-game, navigate back to lobby
+      if (pls.length <= 2) {
+        if (intervalRef.current) clearInterval(intervalRef.current);
+        toast.error("Not enough players remaining. Returning to lobby...");
+        setTimeout(() => navigate("/lobby"), 500);
+        return;
+      }
+
       if (!loaded) {
         const me = pls.find((p: any) => p.id === playerId);
         if (me) {
