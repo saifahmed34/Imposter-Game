@@ -213,7 +213,6 @@ dotnet publish -c Release -o ./publish
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| `POST` | `/api/room/{roomId}/start-vote` | Begin voting phase |
 | `POST` | `/api/vote/{roomId}/submit` | Submit a vote |
 
 ### SignalR Events
