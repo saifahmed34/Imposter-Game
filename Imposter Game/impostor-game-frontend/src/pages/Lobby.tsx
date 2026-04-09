@@ -8,6 +8,8 @@ import PlayerList from "@/components/PlayerList";
 const Lobby = () => {
   const [players, setPlayers] = useState<any[]>([]);
   const [phase, setPhase] = useState(0);
+  const [categories, setCategories] = useState<string[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const navigate = useNavigate();
   const roomId = sessionStorage.getItem("roomId");
   const playerId = sessionStorage.getItem("playerId");
@@ -21,6 +23,7 @@ const Lobby = () => {
     }
     loadRoomData();
     intervalRef.current = window.setInterval(loadRoomData, 2000);
+    loadCategories();
     return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
   }, []);
 
@@ -33,6 +36,9 @@ const Lobby = () => {
       const phaseValue = room.phase ?? 0;
       setPlayers(room.players || []);
       setPhase(phaseValue);
+      if (!selectedCategory && room.category)
+        setSelectedCategory(room.category);
+
       // Only navigate to the game view when the room is actively Playing
       // and there are more than 2 players. This avoids looping between
       // lobby and game when players drop to 2 or fewer.
@@ -52,6 +58,18 @@ const Lobby = () => {
     }
   };
 
+  const loadCategories = async () => {
+    try {
+      const res = await fetch(`${API_BASE_URL}/api/Room/categories`, { headers: { Accept: "application/json" } });
+      if (!res.ok) return;
+      const data = await res.json();
+      setCategories(Array.isArray(data) ? data : []);
+      if (Array.isArray(data) && data.length > 0 && !selectedCategory) setSelectedCategory(data[0]);
+    } catch (err) {
+      console.error("Failed to load categories", err);
+    }
+  };
+
   const startGame = async () => {
     try {
       if ((players || []).length <= 2) {
@@ -59,7 +77,11 @@ const Lobby = () => {
         return;
       }
 
-      const res = await fetch(`${API_BASE_URL}/api/Room/${roomId}/start`, { method: "POST", headers: { Accept: "application/json" } });
+      const res = await fetch(`${API_BASE_URL}/api/Room/${roomId}/start`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({ category: selectedCategory })
+      });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       toast.success("Game started!");
       if (intervalRef.current) clearInterval(intervalRef.current);
@@ -129,6 +151,19 @@ const leaveRoom = async () => {
           </div>
 
           <PlayerList players={players} currentPlayerId={playerId} />
+
+          <div>
+            <label className="text-sm text-muted-foreground">Category</label>
+            <select
+              value={selectedCategory ?? ""}
+              onChange={(e) => setSelectedCategory(e.target.value)}
+              className="w-full mt-2 p-2 rounded-md border border-border bg-card"
+            >
+              {categories.map((c) => (
+                <option key={c} value={c}>{c}</option>
+              ))}
+            </select>
+          </div>
 
           <Button
             onClick={startGame}

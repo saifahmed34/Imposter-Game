@@ -10,6 +10,7 @@ namespace ImposterGame.Domain.Entites
     public class GameRoom
     {
         public Guid Id { get; set; }
+        public string? Category { get; set; }
         public GamePhase Phase { get; set; } = GamePhase.Waiting;
 
         // EF-friendly

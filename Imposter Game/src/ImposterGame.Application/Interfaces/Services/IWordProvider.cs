@@ -7,5 +7,7 @@ namespace ImposterGame.Application.Interfaces.Services
     public interface IWordProvider
     {
         string GetRandomWord();
+        string GetRandomWord(string category);
+        IEnumerable<string> GetCategories();
     }
 }

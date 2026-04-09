@@ -22,6 +22,13 @@ namespace ImposterGame.API.Controllers
             _context = context;
         }
 
+        [HttpGet("categories")]
+        public IActionResult GetCategories([FromServices] IWordProvider wordProvider)
+        {
+            var cats = wordProvider.GetCategories().ToList();
+            return Ok(cats);
+        }
+
         [HttpGet("{roomId}")]
         public IActionResult GetRoom(Guid roomId)
         {
@@ -128,11 +135,12 @@ namespace ImposterGame.API.Controllers
         }
 
         [HttpPost("{roomId}/start")]
-        public async Task<IActionResult> StartGameAsync(Guid roomId)
+        public async Task<IActionResult> StartGameAsync(Guid roomId, [FromBody] StartGameRequest request)
         {
             try
             {
-                _gameService.StartGame(roomId);
+                var category = request?.Category ?? string.Empty;
+                _gameService.StartGame(roomId, category);
                 await _hubContext.Clients.Group(roomId.ToString()).SendAsync("GameStarted");
                 return Ok();
             }

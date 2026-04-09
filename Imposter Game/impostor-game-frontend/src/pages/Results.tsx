@@ -39,20 +39,31 @@ const Results = () => {
       });
       setVoteCounts(counts);
 
-      const imposter = pls.find((p: any) => p.isImposter === true || p.IsImposter === true);
-      if (imposter) {
-        const impId = (imposter.id || imposter.Id || "").toString().trim();
-        const vAgainst = counts[impId] || 0;
-        let vOthers = 0;
-        Object.entries(counts).forEach(([id, c]) => { if (id !== impId) vOthers += c; });
-        const impName = imposter.name || imposter.Name;
-
-        if (vAgainst > vOthers) {
-          setResult({ title: "🎉 Civilians Win!", message: `The imposter ${impName} was caught with ${vAgainst} votes!`, type: "win" });
-        } else if (vAgainst < vOthers) {
-          setResult({ title: "😈 Imposter Wins!", message: `The imposter ${impName} escaped! Civilians received more votes.`, type: "lose" });
+      // Determine the single top-voted player. If single top exists and is impostor => civilians win.
+      // Otherwise impostor wins. Ties or no votes count as impostor win.
+      const entries = Object.entries(counts);
+      if (entries.length === 0) {
+        setResult({ title: "😈 Imposter Wins!", message: "No votes were cast. Imposter wins.", type: "lose" });
+      } else {
+        const maxCount = Math.max(...entries.map(([_, c]) => c));
+        const top = entries.filter(([_, c]) => c === maxCount);
+        if (top.length !== 1) {
+          // tie for top votes
+          setResult({ title: "⚖️ It's a Draw!", message: "The votes are tied! No clear decision. Imposter wins.", type: "draw" });
         } else {
-          setResult({ title: "⚖️ It's a Draw!", message: "The votes are tied! No clear decision.", type: "draw" });
+          const topId = top[0][0];
+          const votedOut = pls.find((p: any) => ((p.id || p.Id) || "").toString().trim() === topId);
+          if (!votedOut) {
+            setResult({ title: "😈 Imposter Wins!", message: "Could not determine voted player. Imposter wins.", type: "lose" });
+          } else {
+            const isImposter = Boolean(votedOut.isImposter || votedOut.IsImposter);
+            const name = votedOut.name || votedOut.Name || "Unknown";
+            if (isImposter) {
+              setResult({ title: "🎉 Civilians Win!", message: `The imposter ${name} was caught with ${maxCount} votes!`, type: "win" });
+            } else {
+              setResult({ title: "😈 Imposter Wins!", message: `Players voted out ${name} (not the imposter). Imposter wins!`, type: "lose" });
+            }
+          }
         }
       }
     } catch (error: any) {

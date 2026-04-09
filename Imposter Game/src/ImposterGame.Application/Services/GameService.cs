@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using ImposterGame.Application.DTOs;
+﻿using ImposterGame.Application.DTOs;
 using ImposterGame.Application.Interfaces.Repositories;
 using ImposterGame.Application.Interfaces.Services;
 using ImposterGame.Domain.Entites;
@@ -38,14 +35,32 @@ namespace ImposterGame.Application.Services
 
             _roomRepo.SaveChanges(); // ✔️ بس كده
         }
-        public void StartGame(Guid roomId)
+        // public void StartGame(Guid roomId)
+        // {
+        //     var room = _roomRepo.GetWithPlayers(roomId);
+        //     if (room == null)
+        //         throw new KeyNotFoundException("Room not found");
+        //     // Get a random word for this game
+        //     var word = _wordProvider.GetRandomWord();
+
+        //     // Start the game with the word
+        //     room.StartGame(word);
+
+        //     _roomRepo.Update(room);
+        //     _roomRepo.SaveChanges();
+        // }
+
+        public void StartGame(Guid roomId, string category)
         {
             var room = _roomRepo.GetWithPlayers(roomId);
             if (room == null)
                 throw new KeyNotFoundException("Room not found");
 
-            // Get a random word for this game
-            var word = _wordProvider.GetRandomWord();
+            // store selected category on room
+            room.Category = category;
+
+            // Get a random word for this game from the selected category
+            var word = _wordProvider.GetRandomWord(category);
 
             // Start the game with the word
             room.StartGame(word);
@@ -85,14 +100,14 @@ namespace ImposterGame.Application.Services
                 throw new KeyNotFoundException("Room not found");
 
             room.SubmitVote(voterId, targetId);
-          //  _roomRepo.Update(room);
+            //  _roomRepo.Update(room);
             _roomRepo.SaveChanges();
 
             if (!room.AllVotesSubmitted())
                 return null;
 
             var result = room.ResolveVotes();
-          //  _roomRepo.Update(room);
+            //  _roomRepo.Update(room);
             _roomRepo.SaveChanges();
 
             return new VoteResultDto
@@ -111,6 +126,7 @@ namespace ImposterGame.Application.Services
             return new RoomDto
             {
                 Id = room.Id,
+                Category = room.Category,
                 Phase = room.Phase,
                 Players = room.Players.Select(p => new PlayerDto
                 {
@@ -119,12 +135,12 @@ namespace ImposterGame.Application.Services
                     HasVoted = p.HasVoted,
                     IsImposter = p.IsImposter,
                     Word = p.Word
-                    
+
                 }).ToList()
             };
         }
 
-        public void LeaveRoom(Guid roomid,Guid playerId)
+        public void LeaveRoom(Guid roomid, Guid playerId)
         {
             var player = _roomRepo.GetPlayer(playerId);
             if (player == null)

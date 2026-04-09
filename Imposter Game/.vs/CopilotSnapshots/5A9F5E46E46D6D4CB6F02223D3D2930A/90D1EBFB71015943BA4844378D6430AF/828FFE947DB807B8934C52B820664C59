@@ -1,4 +1,4 @@
-using ImposterGame.API.Hubs;
+﻿using ImposterGame.API.Hubs;
 using ImposterGame.Application.Interfaces.Repositories;
 using ImposterGame.Application.Interfaces.Services;
 using ImposterGame.Application.Services;
@@ -17,11 +17,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// builder.Services.AddDbContext<ImposterGameDbContext>(options =>
-//     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<ImposterGameDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddDbContext<ImposterGameDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("local")));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("Post")));
 
 builder.Services.AddScoped<IGameRoomRepository, GameRoomRepository>();
 builder.Services.AddSingleton<IWordProvider, WordProvider>();
@@ -49,6 +49,9 @@ using (var scope = app.Services.CreateScope())
     db.Database.Migrate();
 
 }
+
+
+
 app.UseRouting();
 
 app.UseCors();
@@ -60,8 +63,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.MapHub<GameHub>("/gamehub");
-//app.UseDefaultFiles();
-//app.UseStaticFiles();
+app.UseDefaultFiles();
+app.UseStaticFiles();
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
