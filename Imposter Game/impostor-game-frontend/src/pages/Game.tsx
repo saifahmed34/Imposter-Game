@@ -28,7 +28,7 @@ const Game = () => {
 
   const loadRoomData = async () => {
     try {
-      const res = await fetch(`${API_BASE_URL}/api/Room/${roomId}`, { headers: { Accept: "application/json" } });
+      const res = await fetch(`${API_BASE_URL}/api/Room/${roomId}?playerId=${playerId}`, { headers: { Accept: "application/json" } });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await parseResponse(res);
       const room = data.room || data;
@@ -43,14 +43,11 @@ const Game = () => {
         return;
       }
 
-      if (!loaded) {
-        const me = pls.find((p: any) => p.id === playerId);
-        if (me) {
-          const isImp = me.isImposter === true;
-          setRole(isImp ? "imposter" : "civilian");
-          setWord(isImp ? null : me.word || null);
-          setLoaded(true);
-        }
+      if (!loaded && room.myRole) {
+        const isImp = room.myRole.isImposter === true;
+        setRole(isImp ? "imposter" : "civilian");
+        setWord(isImp ? null : room.myRole.word || null);
+        setLoaded(true);
       }
 
       if (room.phase && room.phase >= 2) {

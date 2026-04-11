@@ -1,7 +1,8 @@
-﻿using ImposterGame.Application.DTOs;
+using ImposterGame.Application.DTOs;
 using ImposterGame.Application.Interfaces.Repositories;
 using ImposterGame.Application.Interfaces.Services;
 using ImposterGame.Domain.Entites;
+using ImposterGame.Domain.Enums;
 
 namespace ImposterGame.Application.Services
 {
@@ -117,13 +118,15 @@ namespace ImposterGame.Application.Services
             };
         }
 
-        public RoomDto GetRoom(Guid roomId)
+        public RoomDto GetRoom(Guid roomId, Guid? playerId = null)
         {
             var room = _roomRepo.GetWithPlayers(roomId);
             if (room == null)
                 throw new KeyNotFoundException("Room not found");
 
-            return new RoomDto
+            var isFinished = room.Phase == GamePhase.Finished;
+
+            var dto = new RoomDto
             {
                 Id = room.Id,
                 Category = room.Category,
@@ -133,11 +136,26 @@ namespace ImposterGame.Application.Services
                     Id = p.Id,
                     Name = p.Name,
                     HasVoted = p.HasVoted,
-                    IsImposter = p.IsImposter,
-                    Word = p.Word
-
+                    // Only reveal imposter identity after the game is finished
+                    IsImposter = isFinished ? p.IsImposter : null
                 }).ToList()
             };
+
+            // Only attach role info for the specific requesting player
+            if (playerId.HasValue)
+            {
+                var me = room.Players.FirstOrDefault(p => p.Id == playerId.Value);
+                if (me != null)
+                {
+                    dto.MyRole = new MyRoleDto
+                    {
+                        IsImposter = me.IsImposter,
+                        Word = me.Word
+                    };
+                }
+            }
+
+            return dto;
         }
 
         public void LeaveRoom(Guid roomid, Guid playerId)

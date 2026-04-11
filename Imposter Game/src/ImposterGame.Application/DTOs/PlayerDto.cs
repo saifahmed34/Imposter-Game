@@ -1,13 +1,15 @@
 ﻿using System;
+using System.Text.Json.Serialization;
 
 namespace ImposterGame.Application.DTOs
 {
     public class PlayerDto
     {
+        // [JsonIgnore]
         public Guid Id { get; set; }
         public required string Name { get; set; }
         public bool HasVoted { get; set; }
-        public bool IsImposter { get; set; }
-        public string? Word { get; set; }
+        
+        public bool? IsImposter { get; set; }
     }
 }

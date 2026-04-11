@@ -1,4 +1,4 @@
-﻿using ImposterGame.API.Hubs;
+using ImposterGame.API.Hubs;
 using ImposterGame.API.Requests;
 using ImposterGame.Application.Interfaces.Services;
 using ImposterGame.Infrastructure.Persistence;
@@ -30,11 +30,11 @@ namespace ImposterGame.API.Controllers
         }
 
         [HttpGet("{roomId}")]
-        public IActionResult GetRoom(Guid roomId)
+        public IActionResult GetRoom(Guid roomId, [FromQuery] Guid? playerId = null)
         {
             try
             {
-                var room = _gameService.GetRoom(roomId);
+                var room = _gameService.GetRoom(roomId, playerId);
 
                 // Get votes from the database
                 var votes = _context.Votes

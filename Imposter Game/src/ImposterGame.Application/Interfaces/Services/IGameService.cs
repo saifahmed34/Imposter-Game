@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using ImposterGame.Application.DTOs;
 
 namespace ImposterGame.Application.Interfaces.Services
@@ -11,7 +11,9 @@ namespace ImposterGame.Application.Interfaces.Services
         void BeginVoting(Guid roomId);
         void ResetRoom(Guid roomId);
         VoteResultDto SubmitVote(Guid roomId, Guid voterId, Guid targetId);
-        RoomDto GetRoom(Guid roomId);
+
+        RoomDto GetRoom(Guid roomId, Guid? playerId = null);
+        
         void LeaveRoom(Guid playerId,Guid PlayerId);
     }
 }

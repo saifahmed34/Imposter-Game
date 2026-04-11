@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using ImposterGame.Application.Interfaces.Services;
 
 namespace ImpostorGame.Infrastructure.Words
@@ -72,7 +72,13 @@ namespace ImpostorGame.Infrastructure.Words
         private static readonly string[] DefaultWords = new[] { "apple", "banana", "carrot", "dog", "elephant" };
 
         public string GetRandomWord()
-            => DefaultWords[Random.Shared.Next(DefaultWords.Length)];
+        {
+            var keys = CategoryWords.Keys.ToList();
+            if (keys.Count == 0) return "imposter"; // Fallback
+            var randomCategory = keys[Random.Shared.Next(keys.Count)];
+            var list = CategoryWords[randomCategory];
+            return list[Random.Shared.Next(list.Length)];
+        }
 
         public string GetRandomWord(string category)
         {

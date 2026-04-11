@@ -29,7 +29,7 @@ const Lobby = () => {
 
   const loadRoomData = async () => {
     try {
-      const res = await fetch(`${API_BASE_URL}/api/Room/${roomId}`, { headers: { Accept: "application/json" } });
+      const res = await fetch(`${API_BASE_URL}/api/Room/${roomId}?playerId=${playerId}`, { headers: { Accept: "application/json" } });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await parseResponse(res);
       const room = data.room || data;
@@ -70,17 +70,19 @@ const Lobby = () => {
     }
   };
 
-  const startGame = async () => {
+  const startGame = async (randomize: boolean = false) => {
     try {
       if ((players || []).length <= 2) {
         toast.error("Not enough players to start. Need at least 3 players.");
         return;
       }
 
+      const categoryToUse = randomize ? "" : selectedCategory;
+
       const res = await fetch(`${API_BASE_URL}/api/Room/${roomId}/start`, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ category: selectedCategory })
+        body: JSON.stringify({ category: categoryToUse })
       });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       toast.success("Game started!");
@@ -91,36 +93,36 @@ const Lobby = () => {
     }
   };
 
-const leaveRoom = async () => {
-  try {
-    const roomId = sessionStorage.getItem("roomId");
-    const playerId = sessionStorage.getItem("playerId");
+  const leaveRoom = async () => {
+    try {
+      const roomId = sessionStorage.getItem("roomId");
+      const playerId = sessionStorage.getItem("playerId");
 
-    if (!roomId || !playerId) return;
+      if (!roomId || !playerId) return;
 
-    await leaveRoomApi(roomId, playerId);
+      await leaveRoomApi(roomId, playerId);
 
-    if (intervalRef.current) clearInterval(intervalRef.current);
+      if (intervalRef.current) clearInterval(intervalRef.current);
 
-    sessionStorage.clear();
-    navigate("/");
-  } catch (err) {
-    console.error("Error leaving room:", err);
+      sessionStorage.clear();
+      navigate("/");
+    } catch (err) {
+      console.error("Error leaving room:", err);
+    }
+  };
+
+
+  async function leaveRoomApi(roomId: string, playerId: string) {
+    await fetch(`${API_BASE_URL}/api/Room/${roomId}/leave`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        playerId: playerId
+      })
+    });
   }
-};
-
-
-   async function leaveRoomApi(roomId: string, playerId: string) {
-  await fetch(`${API_BASE_URL}/api/Room/${roomId}/leave`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      playerId: playerId
-    })
-  });
-}
 
 
 
@@ -166,11 +168,18 @@ const leaveRoom = async () => {
           </div>
 
           <Button
-            onClick={startGame}
+            onClick={() => startGame(false)}
             disabled={players.length <= 2}
             className="w-full bg-success text-success-foreground hover:bg-success/80 font-semibold"
           >
             Start Game
+          </Button>
+          <Button
+            onClick={() => startGame(true)}
+            disabled={players.length <= 2}
+            className="w-full bg-primary text-primary-foreground hover:bg-primary/80 font-semibold"
+          >
+            Randomize Game
           </Button>
           <Button onClick={leaveRoom} variant="outline" className="w-full border-border text-foreground hover:bg-secondary">
             Leave Room

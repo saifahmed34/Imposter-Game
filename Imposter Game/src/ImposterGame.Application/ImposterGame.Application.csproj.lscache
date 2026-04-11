@@ -57,6 +57,7 @@ TemporaryDependencyNodeTargetIdentifier=net10.0
 
 [sourceFiles]
 DTOs/
+ MyRoleDto.cs
  PlayerDto.cs
  RoomDto.cs
  VoteResultDto.cs

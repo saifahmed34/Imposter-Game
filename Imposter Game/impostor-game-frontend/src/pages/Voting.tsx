@@ -55,7 +55,7 @@ const Voting = () => {
   const loadRoomData = async () => {
     if (!roomId) return;
     try {
-      const res = await fetch(`${API_BASE_URL}/api/Room/${roomId}`, {
+      const res = await fetch(`${API_BASE_URL}/api/Room/${roomId}?playerId=${playerId}`, {
         headers: { Accept: "application/json" },
       });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);

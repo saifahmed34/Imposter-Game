@@ -1,0 +1,27 @@
+
+
+services:
+  backend:
+    image: "impostergame-api:latest"
+    ports:
+      - "5289:5289"
+    container_name: impostergame
+    environment:
+      - ASPNETCORE_URLS=http://0.0.0.0:5289
+    depends_on:
+      - db
+
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sql_server_container
+    environment:
+      SA_PASSWORD: "Password123@"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1434:1433"
+    volumes:
+      - sql_data:/var/opt/mssql
+    # no healthcheck per user request
+
+volumes:
+  sql_data:
