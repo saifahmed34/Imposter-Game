@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using ImposterGame.Domain.Entites;
@@ -97,7 +97,13 @@ namespace ImposterGame.Domain.Entites
         {
             var player = Players.SingleOrDefault(p => p.Id == playerId);
             if (player != null)
+            {
                 Players.Remove(player);
+                if (Players.Count <= 2 && Phase != GamePhase.Waiting)
+                {
+                    ResetRoom();
+                }
+            }
         }
 
         public void ResetRoom()

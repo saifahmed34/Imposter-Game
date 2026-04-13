@@ -3,16 +3,36 @@
   "WorkspaceRootPath": "C:\\Users\\saifa\\Desktop\\Imposter-Game\\Imposter Game\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{215D33B3-CBFF-26C6-2939-EFF1E736138F}|src\\ImposterGame.Application\\ImposterGame.Application.csproj|c:\\users\\saifa\\desktop\\imposter-game\\imposter game\\src\\impostergame.application\\dtos\\playerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{215D33B3-CBFF-26C6-2939-EFF1E736138F}|src\\ImposterGame.Application\\ImposterGame.Application.csproj|solutionrelative:src\\impostergame.application\\dtos\\playerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F8DD02AC-384C-F336-7763-E631915D6009}|src\\ImposterGame.API\\ImposterGame.API.csproj|c:\\users\\saifa\\desktop\\imposter-game\\imposter game\\src\\impostergame.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F8DD02AC-384C-F336-7763-E631915D6009}|src\\ImposterGame.API\\ImposterGame.API.csproj|solutionrelative:src\\impostergame.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F8DD02AC-384C-F336-7763-E631915D6009}|src\\ImposterGame.API\\ImposterGame.API.csproj|c:\\users\\saifa\\desktop\\imposter-game\\imposter game\\src\\impostergame.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{F8DD02AC-384C-F336-7763-E631915D6009}|src\\ImposterGame.API\\ImposterGame.API.csproj|solutionrelative:src\\impostergame.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E15E7D46-5AC9-FD9B-A45A-97219EC612D8}|src\\ImpostorGame.Infrastructure\\ImpostorGame.Infrastructure.csproj|c:\\users\\saifa\\desktop\\imposter-game\\imposter game\\src\\impostorgame.infrastructure\\persistence\\dbcontexts\\impostorgamedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E15E7D46-5AC9-FD9B-A45A-97219EC612D8}|src\\ImpostorGame.Infrastructure\\ImpostorGame.Infrastructure.csproj|solutionrelative:src\\impostorgame.infrastructure\\persistence\\dbcontexts\\impostorgamedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C186EB96-016F-F693-839E-FF3BCCEEF255}|src\\ImposterGame.Domain\\ImposterGame.Domain.csproj|c:\\users\\saifa\\desktop\\imposter-game\\imposter game\\src\\impostergame.domain\\entites\\vote.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C186EB96-016F-F693-839E-FF3BCCEEF255}|src\\ImposterGame.Domain\\ImposterGame.Domain.csproj|solutionrelative:src\\impostergame.domain\\entites\\vote.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E15E7D46-5AC9-FD9B-A45A-97219EC612D8}|src\\ImpostorGame.Infrastructure\\ImpostorGame.Infrastructure.csproj|c:\\users\\saifa\\desktop\\imposter-game\\imposter game\\src\\impostorgame.infrastructure\\persistence\\repositories\\gameroomrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E15E7D46-5AC9-FD9B-A45A-97219EC612D8}|src\\ImpostorGame.Infrastructure\\ImpostorGame.Infrastructure.csproj|solutionrelative:src\\impostorgame.infrastructure\\persistence\\repositories\\gameroomrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E15E7D46-5AC9-FD9B-A45A-97219EC612D8}|src\\ImpostorGame.Infrastructure\\ImpostorGame.Infrastructure.csproj|c:\\users\\saifa\\desktop\\imposter-game\\imposter game\\src\\impostorgame.infrastructure\\migrations\\20260407221440_add categories.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E15E7D46-5AC9-FD9B-A45A-97219EC612D8}|src\\ImpostorGame.Infrastructure\\ImpostorGame.Infrastructure.csproj|solutionrelative:src\\impostorgame.infrastructure\\migrations\\20260407221440_add categories.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E15E7D46-5AC9-FD9B-A45A-97219EC612D8}|src\\ImpostorGame.Infrastructure\\ImpostorGame.Infrastructure.csproj|c:\\users\\saifa\\desktop\\imposter-game\\imposter game\\src\\impostorgame.infrastructure\\migrations\\20260209113015_initi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E15E7D46-5AC9-FD9B-A45A-97219EC612D8}|src\\ImpostorGame.Infrastructure\\ImpostorGame.Infrastructure.csproj|solutionrelative:src\\impostorgame.infrastructure\\migrations\\20260209113015_initi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{215D33B3-CBFF-26C6-2939-EFF1E736138F}|src\\ImposterGame.Application\\ImposterGame.Application.csproj|c:\\users\\saifa\\desktop\\imposter-game\\imposter game\\src\\impostergame.application\\services\\gameservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{215D33B3-CBFF-26C6-2939-EFF1E736138F}|src\\ImposterGame.Application\\ImposterGame.Application.csproj|solutionrelative:src\\impostergame.application\\services\\gameservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{215D33B3-CBFF-26C6-2939-EFF1E736138F}|src\\ImposterGame.Application\\ImposterGame.Application.csproj|c:\\users\\saifa\\desktop\\imposter-game\\imposter game\\src\\impostergame.application\\impostergame.application.csproj.lscache||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{215D33B3-CBFF-26C6-2939-EFF1E736138F}|src\\ImposterGame.Application\\ImposterGame.Application.csproj|solutionrelative:src\\impostergame.application\\impostergame.application.csproj.lscache||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C186EB96-016F-F693-839E-FF3BCCEEF255}|src\\ImposterGame.Domain\\ImposterGame.Domain.csproj|c:\\users\\saifa\\desktop\\imposter-game\\imposter game\\src\\impostergame.domain\\entites\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -23,20 +43,36 @@
       "RelativeMoniker": "D:0:0:{C186EB96-016F-F693-839E-FF3BCCEEF255}|src\\ImposterGame.Domain\\ImposterGame.Domain.csproj|solutionrelative:src\\impostergame.domain\\entites\\gameroom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{215D33B3-CBFF-26C6-2939-EFF1E736138F}|src\\ImposterGame.Application\\ImposterGame.Application.csproj|c:\\users\\saifa\\desktop\\imposter-game\\imposter game\\src\\impostergame.application\\interfaces\\services\\igameservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{215D33B3-CBFF-26C6-2939-EFF1E736138F}|src\\ImposterGame.Application\\ImposterGame.Application.csproj|solutionrelative:src\\impostergame.application\\interfaces\\services\\igameservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E15E7D46-5AC9-FD9B-A45A-97219EC612D8}|src\\ImpostorGame.Infrastructure\\ImpostorGame.Infrastructure.csproj|c:\\users\\saifa\\desktop\\imposter-game\\imposter game\\src\\impostorgame.infrastructure\\persistence\\repositories\\gameroomrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E15E7D46-5AC9-FD9B-A45A-97219EC612D8}|src\\ImpostorGame.Infrastructure\\ImpostorGame.Infrastructure.csproj|solutionrelative:src\\impostorgame.infrastructure\\persistence\\repositories\\gameroomrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{215D33B3-CBFF-26C6-2939-EFF1E736138F}|src\\ImposterGame.Application\\ImposterGame.Application.csproj|c:\\users\\saifa\\desktop\\imposter-game\\imposter game\\src\\impostergame.application\\dtos\\roomdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{215D33B3-CBFF-26C6-2939-EFF1E736138F}|src\\ImposterGame.Application\\ImposterGame.Application.csproj|solutionrelative:src\\impostergame.application\\dtos\\roomdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C186EB96-016F-F693-839E-FF3BCCEEF255}|src\\ImposterGame.Domain\\ImposterGame.Domain.csproj|c:\\users\\saifa\\desktop\\imposter-game\\imposter game\\src\\impostergame.domain\\enums\\gamephase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C186EB96-016F-F693-839E-FF3BCCEEF255}|src\\ImposterGame.Domain\\ImposterGame.Domain.csproj|solutionrelative:src\\impostergame.domain\\enums\\gamephase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F8DD02AC-384C-F336-7763-E631915D6009}|src\\ImposterGame.API\\ImposterGame.API.csproj|c:\\users\\saifa\\desktop\\imposter-game\\imposter game\\src\\impostergame.api\\controllers\\roomcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F8DD02AC-384C-F336-7763-E631915D6009}|src\\ImposterGame.API\\ImposterGame.API.csproj|solutionrelative:src\\impostergame.api\\controllers\\roomcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E15E7D46-5AC9-FD9B-A45A-97219EC612D8}|src\\ImpostorGame.Infrastructure\\ImpostorGame.Infrastructure.csproj|c:\\users\\saifa\\desktop\\imposter-game\\imposter game\\src\\impostorgame.infrastructure\\migrations\\20260407221440_add categories.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E15E7D46-5AC9-FD9B-A45A-97219EC612D8}|src\\ImpostorGame.Infrastructure\\ImpostorGame.Infrastructure.csproj|solutionrelative:src\\impostorgame.infrastructure\\migrations\\20260407221440_add categories.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E15E7D46-5AC9-FD9B-A45A-97219EC612D8}|src\\ImpostorGame.Infrastructure\\ImpostorGame.Infrastructure.csproj|c:\\users\\saifa\\desktop\\imposter-game\\imposter game\\src\\impostorgame.infrastructure\\impostorgame.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{E15E7D46-5AC9-FD9B-A45A-97219EC612D8}|src\\ImpostorGame.Infrastructure\\ImpostorGame.Infrastructure.csproj|solutionrelative:src\\impostorgame.infrastructure\\impostorgame.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{215D33B3-CBFF-26C6-2939-EFF1E736138F}|src\\ImposterGame.Application\\ImposterGame.Application.csproj|c:\\users\\saifa\\desktop\\imposter-game\\imposter game\\src\\impostergame.application\\dtos\\playerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{215D33B3-CBFF-26C6-2939-EFF1E736138F}|src\\ImposterGame.Application\\ImposterGame.Application.csproj|solutionrelative:src\\impostergame.application\\dtos\\playerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{215D33B3-CBFF-26C6-2939-EFF1E736138F}|src\\ImposterGame.Application\\ImposterGame.Application.csproj|c:\\users\\saifa\\desktop\\imposter-game\\imposter game\\src\\impostergame.application\\impostergame.application.csproj.lscache||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{215D33B3-CBFF-26C6-2939-EFF1E736138F}|src\\ImposterGame.Application\\ImposterGame.Application.csproj|solutionrelative:src\\impostergame.application\\impostergame.application.csproj.lscache||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{215D33B3-CBFF-26C6-2939-EFF1E736138F}|src\\ImposterGame.Application\\ImposterGame.Application.csproj|c:\\users\\saifa\\desktop\\imposter-game\\imposter game\\src\\impostergame.application\\interfaces\\services\\igameservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{215D33B3-CBFF-26C6-2939-EFF1E736138F}|src\\ImposterGame.Application\\ImposterGame.Application.csproj|solutionrelative:src\\impostergame.application\\interfaces\\services\\igameservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{215D33B3-CBFF-26C6-2939-EFF1E736138F}|src\\ImposterGame.Application\\ImposterGame.Application.csproj|c:\\users\\saifa\\desktop\\imposter-game\\imposter game\\src\\impostergame.application\\dtos\\roomdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{215D33B3-CBFF-26C6-2939-EFF1E736138F}|src\\ImposterGame.Application\\ImposterGame.Application.csproj|solutionrelative:src\\impostergame.application\\dtos\\roomdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F8DD02AC-384C-F336-7763-E631915D6009}|src\\ImposterGame.API\\ImposterGame.API.csproj|c:\\users\\saifa\\desktop\\imposter-game\\imposter game\\src\\impostergame.api\\requests\\startgamerequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -59,20 +95,8 @@
       "RelativeMoniker": "D:0:0:{E15E7D46-5AC9-FD9B-A45A-97219EC612D8}|src\\ImpostorGame.Infrastructure\\ImpostorGame.Infrastructure.csproj|solutionrelative:src\\impostorgame.infrastructure\\words\\wordprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F8DD02AC-384C-F336-7763-E631915D6009}|src\\ImposterGame.API\\ImposterGame.API.csproj|c:\\users\\saifa\\desktop\\imposter-game\\imposter game\\src\\impostergame.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{F8DD02AC-384C-F336-7763-E631915D6009}|src\\ImposterGame.API\\ImposterGame.API.csproj|solutionrelative:src\\impostergame.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F8DD02AC-384C-F336-7763-E631915D6009}|src\\ImposterGame.API\\ImposterGame.API.csproj|c:\\users\\saifa\\desktop\\imposter-game\\imposter game\\src\\impostergame.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F8DD02AC-384C-F336-7763-E631915D6009}|src\\ImposterGame.API\\ImposterGame.API.csproj|solutionrelative:src\\impostergame.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{F8DD02AC-384C-F336-7763-E631915D6009}|src\\ImposterGame.API\\ImposterGame.API.csproj|c:\\users\\saifa\\desktop\\imposter-game\\imposter game\\src\\impostergame.api\\controllers\\votecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F8DD02AC-384C-F336-7763-E631915D6009}|src\\ImposterGame.API\\ImposterGame.API.csproj|solutionrelative:src\\impostergame.api\\controllers\\votecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E15E7D46-5AC9-FD9B-A45A-97219EC612D8}|src\\ImpostorGame.Infrastructure\\ImpostorGame.Infrastructure.csproj|c:\\users\\saifa\\desktop\\imposter-game\\imposter game\\src\\impostorgame.infrastructure\\impostorgame.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{E15E7D46-5AC9-FD9B-A45A-97219EC612D8}|src\\ImpostorGame.Infrastructure\\ImpostorGame.Infrastructure.csproj|solutionrelative:src\\impostorgame.infrastructure\\impostorgame.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F8DD02AC-384C-F336-7763-E631915D6009}|src\\ImposterGame.API\\ImposterGame.API.csproj|c:\\users\\saifa\\desktop\\imposter-game\\imposter game\\src\\impostergame.api\\impostergame.api.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
@@ -91,20 +115,8 @@
       "RelativeMoniker": "D:0:0:{F8DD02AC-384C-F336-7763-E631915D6009}|src\\ImposterGame.API\\ImposterGame.API.csproj|solutionrelative:src\\impostergame.api\\requests\\voterequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E15E7D46-5AC9-FD9B-A45A-97219EC612D8}|src\\ImpostorGame.Infrastructure\\ImpostorGame.Infrastructure.csproj|c:\\users\\saifa\\desktop\\imposter-game\\imposter game\\src\\impostorgame.infrastructure\\persistence\\dbcontexts\\impostorgamedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E15E7D46-5AC9-FD9B-A45A-97219EC612D8}|src\\ImpostorGame.Infrastructure\\ImpostorGame.Infrastructure.csproj|solutionrelative:src\\impostorgame.infrastructure\\persistence\\dbcontexts\\impostorgamedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{215D33B3-CBFF-26C6-2939-EFF1E736138F}|src\\ImposterGame.Application\\ImposterGame.Application.csproj|c:\\users\\saifa\\desktop\\imposter-game\\imposter game\\src\\impostergame.application\\dtos\\voteresultdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{215D33B3-CBFF-26C6-2939-EFF1E736138F}|src\\ImposterGame.Application\\ImposterGame.Application.csproj|solutionrelative:src\\impostergame.application\\dtos\\voteresultdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C186EB96-016F-F693-839E-FF3BCCEEF255}|src\\ImposterGame.Domain\\ImposterGame.Domain.csproj|c:\\users\\saifa\\desktop\\imposter-game\\imposter game\\src\\impostergame.domain\\entites\\vote.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C186EB96-016F-F693-839E-FF3BCCEEF255}|src\\ImposterGame.Domain\\ImposterGame.Domain.csproj|solutionrelative:src\\impostergame.domain\\entites\\vote.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E15E7D46-5AC9-FD9B-A45A-97219EC612D8}|src\\ImpostorGame.Infrastructure\\ImpostorGame.Infrastructure.csproj|c:\\users\\saifa\\desktop\\imposter-game\\imposter game\\src\\impostorgame.infrastructure\\migrations\\20260407221440_add categories.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E15E7D46-5AC9-FD9B-A45A-97219EC612D8}|src\\ImpostorGame.Infrastructure\\ImpostorGame.Infrastructure.csproj|solutionrelative:src\\impostorgame.infrastructure\\migrations\\20260407221440_add categories.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -114,7 +126,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 18,
+          "SelectedChildIndex": 19,
           "Children": [
             {
               "$type": "Bookmark",
@@ -122,7 +134,43 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
+              "Title": "20260407221440_add categories.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\saifa\\Desktop\\Imposter-Game\\Imposter Game\\src\\ImpostorGame.Infrastructure\\Migrations\\20260407221440_add categories.Designer.cs",
+              "RelativeDocumentMoniker": "src\\ImpostorGame.Infrastructure\\Migrations\\20260407221440_add categories.Designer.cs",
+              "ToolTip": "C:\\Users\\saifa\\Desktop\\Imposter-Game\\Imposter Game\\src\\ImpostorGame.Infrastructure\\Migrations\\20260407221440_add categories.Designer.cs",
+              "RelativeToolTip": "src\\ImpostorGame.Infrastructure\\Migrations\\20260407221440_add categories.Designer.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAjwA8AAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-11T22:39:09.497Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "20260209113015_initi.cs",
+              "DocumentMoniker": "C:\\Users\\saifa\\Desktop\\Imposter-Game\\Imposter Game\\src\\ImpostorGame.Infrastructure\\Migrations\\20260209113015_initi.cs",
+              "RelativeDocumentMoniker": "src\\ImpostorGame.Infrastructure\\Migrations\\20260209113015_initi.cs",
+              "ToolTip": "C:\\Users\\saifa\\Desktop\\Imposter-Game\\Imposter Game\\src\\ImpostorGame.Infrastructure\\Migrations\\20260209113015_initi.cs",
+              "RelativeToolTip": "src\\ImpostorGame.Infrastructure\\Migrations\\20260209113015_initi.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-11T22:39:07.162Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "GamePhase.cs",
+              "DocumentMoniker": "C:\\Users\\saifa\\Desktop\\Imposter-Game\\Imposter Game\\src\\ImposterGame.Domain\\Enums\\GamePhase.cs",
+              "RelativeDocumentMoniker": "src\\ImposterGame.Domain\\Enums\\GamePhase.cs",
+              "ToolTip": "C:\\Users\\saifa\\Desktop\\Imposter-Game\\Imposter Game\\src\\ImposterGame.Domain\\Enums\\GamePhase.cs",
+              "RelativeToolTip": "src\\ImposterGame.Domain\\Enums\\GamePhase.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-11T22:37:47.304Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
               "Title": "ImposterGame.Application.csproj.lscache",
               "DocumentMoniker": "C:\\Users\\saifa\\Desktop\\Imposter-Game\\Imposter Game\\src\\ImposterGame.Application\\ImposterGame.Application.csproj.lscache",
               "RelativeDocumentMoniker": "src\\ImposterGame.Application\\ImposterGame.Application.csproj.lscache",
@@ -130,25 +178,23 @@
               "RelativeToolTip": "src\\ImposterGame.Application\\ImposterGame.Application.csproj.lscache",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-04-09T12:17:41.517Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-09T12:17:41.517Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 9,
               "Title": "GameRoom.cs",
               "DocumentMoniker": "C:\\Users\\saifa\\Desktop\\Imposter-Game\\Imposter Game\\src\\ImposterGame.Domain\\Entites\\GameRoom.cs",
               "RelativeDocumentMoniker": "src\\ImposterGame.Domain\\Entites\\GameRoom.cs",
               "ToolTip": "C:\\Users\\saifa\\Desktop\\Imposter-Game\\Imposter Game\\src\\ImposterGame.Domain\\Entites\\GameRoom.cs",
               "RelativeToolTip": "src\\ImposterGame.Domain\\Entites\\GameRoom.cs",
-              "ViewState": "AgIAAC4AAAAAAAAAAADwvxAAAAA6AAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAD4AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-09T12:16:31.939Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-09T12:16:31.939Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 18,
               "Title": "StartGameRequest.cs",
               "DocumentMoniker": "C:\\Users\\saifa\\Desktop\\Imposter-Game\\Imposter Game\\src\\ImposterGame.API\\Requests\\StartGameRequest.cs",
               "RelativeDocumentMoniker": "src\\ImposterGame.API\\Requests\\StartGameRequest.cs",
@@ -160,7 +206,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 22,
               "Title": "WordProvider.cs",
               "DocumentMoniker": "C:\\Users\\saifa\\Desktop\\Imposter-Game\\Imposter Game\\src\\ImpostorGame.Infrastructure\\Words\\WordProvider.cs",
               "RelativeDocumentMoniker": "src\\ImpostorGame.Infrastructure\\Words\\WordProvider.cs",
@@ -172,19 +218,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 12,
               "Title": "20260407221440_add categories.cs",
               "DocumentMoniker": "C:\\Users\\saifa\\Desktop\\Imposter-Game\\Imposter Game\\src\\ImpostorGame.Infrastructure\\Migrations\\20260407221440_add categories.cs",
               "RelativeDocumentMoniker": "src\\ImpostorGame.Infrastructure\\Migrations\\20260407221440_add categories.cs",
               "ToolTip": "C:\\Users\\saifa\\Desktop\\Imposter-Game\\Imposter Game\\src\\ImpostorGame.Infrastructure\\Migrations\\20260407221440_add categories.cs",
               "RelativeToolTip": "src\\ImpostorGame.Infrastructure\\Migrations\\20260407221440_add categories.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAuwAcAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-07T22:14:40.757Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 13,
               "Title": "ImpostorGame.Infrastructure.csproj",
               "DocumentMoniker": "C:\\Users\\saifa\\Desktop\\Imposter-Game\\Imposter Game\\src\\ImpostorGame.Infrastructure\\ImpostorGame.Infrastructure.csproj",
               "RelativeDocumentMoniker": "src\\ImpostorGame.Infrastructure\\ImpostorGame.Infrastructure.csproj",
@@ -196,7 +242,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 24,
               "Title": "ImposterGame.API",
               "DocumentMoniker": "C:\\Users\\saifa\\Desktop\\Imposter-Game\\Imposter Game\\src\\ImposterGame.API\\ImposterGame.API.csproj",
               "RelativeDocumentMoniker": "src\\ImposterGame.API\\ImposterGame.API.csproj",
@@ -207,7 +253,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 25,
               "Title": "ImposterGame.API.csproj",
               "DocumentMoniker": "C:\\Users\\saifa\\Desktop\\Imposter-Game\\Imposter Game\\src\\ImposterGame.API\\ImposterGame.API.csproj",
               "RelativeDocumentMoniker": "src\\ImposterGame.API\\ImposterGame.API.csproj",
@@ -219,19 +265,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 1,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\saifa\\Desktop\\Imposter-Game\\Imposter Game\\src\\ImposterGame.API\\appsettings.json",
               "RelativeDocumentMoniker": "src\\ImposterGame.API\\appsettings.json",
               "ToolTip": "C:\\Users\\saifa\\Desktop\\Imposter-Game\\Imposter Game\\src\\ImposterGame.API\\appsettings.json",
               "RelativeToolTip": "src\\ImposterGame.API\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAADAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2026-04-02T14:50:40.593Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 26,
               "Title": "launchSettings.json",
               "DocumentMoniker": "C:\\Users\\saifa\\Desktop\\Imposter-Game\\Imposter Game\\src\\ImposterGame.API\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "src\\ImposterGame.API\\Properties\\launchSettings.json",
@@ -243,7 +289,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 19,
               "Title": "LeaveRoomRequest.cs",
               "DocumentMoniker": "C:\\Users\\saifa\\Desktop\\Imposter-Game\\Imposter Game\\src\\ImposterGame.API\\Requests\\LeaveRoomRequest.cs",
               "RelativeDocumentMoniker": "src\\ImposterGame.API\\Requests\\LeaveRoomRequest.cs",
@@ -255,19 +301,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 16,
               "Title": "IGameService.cs",
               "DocumentMoniker": "C:\\Users\\saifa\\Desktop\\Imposter-Game\\Imposter Game\\src\\ImposterGame.Application\\Interfaces\\Services\\IGameService.cs",
               "RelativeDocumentMoniker": "src\\ImposterGame.Application\\Interfaces\\Services\\IGameService.cs",
               "ToolTip": "C:\\Users\\saifa\\Desktop\\Imposter-Game\\Imposter Game\\src\\ImposterGame.Application\\Interfaces\\Services\\IGameService.cs",
               "RelativeToolTip": "src\\ImposterGame.Application\\Interfaces\\Services\\IGameService.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAYwBEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAA1wBEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-14T19:37:37.355Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 21,
               "Title": "IGameRoomRepository.cs",
               "DocumentMoniker": "C:\\Users\\saifa\\Desktop\\Imposter-Game\\Imposter Game\\src\\ImposterGame.Application\\Interfaces\\Repositories\\IGameRoomRepository.cs",
               "RelativeDocumentMoniker": "src\\ImposterGame.Application\\Interfaces\\Repositories\\IGameRoomRepository.cs",
@@ -279,43 +325,44 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 4,
               "Title": "GameRoomRepository.cs",
               "DocumentMoniker": "C:\\Users\\saifa\\Desktop\\Imposter-Game\\Imposter Game\\src\\ImpostorGame.Infrastructure\\Persistence\\Repositories\\GameRoomRepository.cs",
               "RelativeDocumentMoniker": "src\\ImpostorGame.Infrastructure\\Persistence\\Repositories\\GameRoomRepository.cs",
               "ToolTip": "C:\\Users\\saifa\\Desktop\\Imposter-Game\\Imposter Game\\src\\ImpostorGame.Infrastructure\\Persistence\\Repositories\\GameRoomRepository.cs",
               "RelativeToolTip": "src\\ImpostorGame.Infrastructure\\Persistence\\Repositories\\GameRoomRepository.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAYwB4AAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-14T19:37:23.571Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 2,
               "Title": "ImpostorGameDbContext.cs",
               "DocumentMoniker": "C:\\Users\\saifa\\Desktop\\Imposter-Game\\Imposter Game\\src\\ImpostorGame.Infrastructure\\Persistence\\DbContexts\\ImpostorGameDbContext.cs",
               "RelativeDocumentMoniker": "src\\ImpostorGame.Infrastructure\\Persistence\\DbContexts\\ImpostorGameDbContext.cs",
               "ToolTip": "C:\\Users\\saifa\\Desktop\\Imposter-Game\\Imposter Game\\src\\ImpostorGame.Infrastructure\\Persistence\\DbContexts\\ImpostorGameDbContext.cs",
               "RelativeToolTip": "src\\ImpostorGame.Infrastructure\\Persistence\\DbContexts\\ImpostorGameDbContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAAAA0AAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-14T19:37:21.387Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\saifa\\Desktop\\Imposter-Game\\Imposter Game\\src\\ImposterGame.API\\Program.cs",
               "RelativeDocumentMoniker": "src\\ImposterGame.API\\Program.cs",
               "ToolTip": "C:\\Users\\saifa\\Desktop\\Imposter-Game\\Imposter Game\\src\\ImposterGame.API\\Program.cs",
               "RelativeToolTip": "src\\ImposterGame.API\\Program.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAlwAsAAAAxAAAAAAAAAA==",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAgwEAAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-12T12:26:17.135Z"
+              "WhenOpened": "2026-02-12T12:26:17.135Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 20,
               "Title": "JoinRoomRequest.cs",
               "DocumentMoniker": "C:\\Users\\saifa\\Desktop\\Imposter-Game\\Imposter Game\\src\\ImposterGame.API\\Requests\\JoinRoomRequest.cs",
               "RelativeDocumentMoniker": "src\\ImposterGame.API\\Requests\\JoinRoomRequest.cs",
@@ -327,7 +374,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 14,
               "Title": "PlayerDto.cs",
               "DocumentMoniker": "C:\\Users\\saifa\\Desktop\\Imposter-Game\\Imposter Game\\src\\ImposterGame.Application\\DTOs\\PlayerDto.cs",
               "RelativeDocumentMoniker": "src\\ImposterGame.Application\\DTOs\\PlayerDto.cs",
@@ -335,25 +382,23 @@
               "RelativeToolTip": "src\\ImposterGame.Application\\DTOs\\PlayerDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-12T10:56:26.628Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-12T10:56:26.628Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 7,
               "Title": "GameService.cs",
               "DocumentMoniker": "C:\\Users\\saifa\\Desktop\\Imposter-Game\\Imposter Game\\src\\ImposterGame.Application\\Services\\GameService.cs",
               "RelativeDocumentMoniker": "src\\ImposterGame.Application\\Services\\GameService.cs",
               "ToolTip": "C:\\Users\\saifa\\Desktop\\Imposter-Game\\Imposter Game\\src\\ImposterGame.Application\\Services\\GameService.cs",
               "RelativeToolTip": "src\\ImposterGame.Application\\Services\\GameService.cs",
-              "ViewState": "AgIAAHQAAAAAAAAAAAAYwIcAAAAUAAAAAAAAAA==",
+              "ViewState": "AgIAAF8AAAAAAAAAAAAewGsAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-09T18:26:38.545Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-09T18:26:38.545Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 17,
               "Title": "RoomDto.cs",
               "DocumentMoniker": "C:\\Users\\saifa\\Desktop\\Imposter-Game\\Imposter Game\\src\\ImposterGame.Application\\DTOs\\RoomDto.cs",
               "RelativeDocumentMoniker": "src\\ImposterGame.Application\\DTOs\\RoomDto.cs",
@@ -365,32 +410,31 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 8,
               "Title": "Player.cs",
               "DocumentMoniker": "C:\\Users\\saifa\\Desktop\\Imposter-Game\\Imposter Game\\src\\ImposterGame.Domain\\Entites\\Player.cs",
               "RelativeDocumentMoniker": "src\\ImposterGame.Domain\\Entites\\Player.cs",
               "ToolTip": "C:\\Users\\saifa\\Desktop\\Imposter-Game\\Imposter Game\\src\\ImposterGame.Domain\\Entites\\Player.cs",
               "RelativeToolTip": "src\\ImposterGame.Domain\\Entites\\Player.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAA2AAAAAAAAAA==",
+              "ViewState": "AgIAABYAAAAAAAAAAAAnwBIAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-09T18:24:18.735Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-09T18:24:18.735Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 3,
               "Title": "Vote.cs",
               "DocumentMoniker": "C:\\Users\\saifa\\Desktop\\Imposter-Game\\Imposter Game\\src\\ImposterGame.Domain\\Entites\\Vote.cs",
               "RelativeDocumentMoniker": "src\\ImposterGame.Domain\\Entites\\Vote.cs",
               "ToolTip": "C:\\Users\\saifa\\Desktop\\Imposter-Game\\Imposter Game\\src\\ImposterGame.Domain\\Entites\\Vote.cs",
               "RelativeToolTip": "src\\ImposterGame.Domain\\Entites\\Vote.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAgAAAAAAAAAAAA3wBcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-09T18:24:16.152Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 28,
               "Title": "VoteResultDto.cs",
               "DocumentMoniker": "C:\\Users\\saifa\\Desktop\\Imposter-Game\\Imposter Game\\src\\ImposterGame.Application\\DTOs\\VoteResultDto.cs",
               "RelativeDocumentMoniker": "src\\ImposterGame.Application\\DTOs\\VoteResultDto.cs",
@@ -402,7 +446,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 27,
               "Title": "VoteRequest.cs",
               "DocumentMoniker": "C:\\Users\\saifa\\Desktop\\Imposter-Game\\Imposter Game\\src\\ImposterGame.API\\Requests\\VoteRequest.cs",
               "RelativeDocumentMoniker": "src\\ImposterGame.API\\Requests\\VoteRequest.cs",
@@ -414,25 +458,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "RoomController.cs",
               "DocumentMoniker": "C:\\Users\\saifa\\Desktop\\Imposter-Game\\Imposter Game\\src\\ImposterGame.API\\Controllers\\RoomController.cs",
               "RelativeDocumentMoniker": "src\\ImposterGame.API\\Controllers\\RoomController.cs",
               "ToolTip": "C:\\Users\\saifa\\Desktop\\Imposter-Game\\Imposter Game\\src\\ImposterGame.API\\Controllers\\RoomController.cs",
               "RelativeToolTip": "src\\ImposterGame.API\\Controllers\\RoomController.cs",
-              "ViewState": "AgIAAEUAAAAAAAAAAAAmwFkAAAAfAAAAAAAAAA==",
+              "ViewState": "AgIAAGMAAAAAAAAAAAAjwHAAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-09T18:23:54.255Z"
+              "WhenOpened": "2026-02-09T18:23:54.255Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 23,
               "Title": "VoteController.cs",
               "DocumentMoniker": "C:\\Users\\saifa\\Desktop\\Imposter-Game\\Imposter Game\\src\\ImposterGame.API\\Controllers\\VoteController.cs",
               "RelativeDocumentMoniker": "src\\ImposterGame.API\\Controllers\\VoteController.cs",
               "ToolTip": "C:\\Users\\saifa\\Desktop\\Imposter-Game\\Imposter Game\\src\\ImposterGame.API\\Controllers\\VoteController.cs",
               "RelativeToolTip": "src\\ImposterGame.API\\Controllers\\VoteController.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAACQAAAAoAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAIBJwCQAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-09T18:23:17.976Z"
             }

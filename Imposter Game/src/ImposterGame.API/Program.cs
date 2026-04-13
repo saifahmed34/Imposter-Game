@@ -17,27 +17,28 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// builder.Services.AddDbContext<ImposterGameDbContext>(options =>
-//     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
 builder.Services.AddDbContext<ImposterGameDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("local")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+//builder.Services.AddDbContext<ImposterGameDbContext>(options =>
+//    options.UseSqlServer(builder.Configuration.GetConnectionString("local")));
 
 builder.Services.AddScoped<IGameRoomRepository, GameRoomRepository>();
 builder.Services.AddSingleton<IWordProvider, WordProvider>();
+builder.Services.AddSingleton<IPlayerConnectionTracker, PlayerConnectionTracker>();
 builder.Services.AddScoped<IGameService, GameService>();
 
 builder.Services.AddCors(options =>
 {
-    options.AddDefaultPolicy(policy =>
-    {
-        policy.WithOrigins()
-              .AllowAnyHeader()
-              .AllowAnyMethod()
-              .AllowCredentials().SetIsOriginAllowed(origin => true);
-    });
+    options.AddPolicy("NetlifyPolicy",
+        policy =>
+        {
+            // Replace with your actual Netlify app URL
+            policy.WithOrigins("https://impostergamees.netlify.app")
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+        });
 });
-
 var app = builder.Build();
 
 
@@ -45,13 +46,14 @@ using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<ImposterGameDbContext>();
 
-   
+
     db.Database.Migrate();
 
 }
 app.UseRouting();
 
-app.UseCors();
+app.UseCors("NetlifyPolicy");
+
 
 if (app.Environment.IsDevelopment())
 {

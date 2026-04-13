@@ -10,11 +10,13 @@ namespace ImposterGame.Application.Services
     {
         private readonly IGameRoomRepository _roomRepo;
         private readonly IWordProvider _wordProvider;
+        private readonly IPlayerConnectionTracker _connectionTracker;
 
-        public GameService(IGameRoomRepository roomRepo, IWordProvider wordProvider)
+        public GameService(IGameRoomRepository roomRepo, IWordProvider wordProvider, IPlayerConnectionTracker connectionTracker)
         {
             _roomRepo = roomRepo;
             _wordProvider = wordProvider;
+            _connectionTracker = connectionTracker;
         }
 
         public Guid CreateRoom()
@@ -35,6 +37,9 @@ namespace ImposterGame.Application.Services
             room.AddPlayer(player);
 
             _roomRepo.SaveChanges(); // ✔️ بس كده
+
+            // Initialize the player's heartbeat so they don't get kicked out immediately
+            _connectionTracker.UpdateHeartbeat(player.Id);
         }
         // public void StartGame(Guid roomId)
         // {
@@ -124,6 +129,33 @@ namespace ImposterGame.Application.Services
             if (room == null)
                 throw new KeyNotFoundException("Room not found");
 
+            var requireSave = false;
+            
+            // Check for inactive players (timeout set to 5 seconds)
+            var timeout = TimeSpan.FromSeconds(5);
+            var inactivePlayers = room.Players
+                .Where(p => !_connectionTracker.IsPlayerActive(p.Id, timeout))
+                .ToList();
+
+            foreach (var inactivePlayer in inactivePlayers)
+            {
+                room.RemovePlayer(inactivePlayer.Id);
+                _connectionTracker.RemovePlayerHeartbeat(inactivePlayer.Id);
+                requireSave = true;
+            }
+
+            // Update heartbeat for the current requesting player
+            if (playerId.HasValue && room.Players.Any(p => p.Id == playerId.Value))
+            {
+                _connectionTracker.UpdateHeartbeat(playerId.Value);
+            }
+
+            if (requireSave)
+            {
+                _roomRepo.Update(room);
+                _roomRepo.SaveChanges();
+            }
+
             var isFinished = room.Phase == GamePhase.Finished;
 
             var dto = new RoomDto
@@ -169,6 +201,7 @@ namespace ImposterGame.Application.Services
                 return;
 
             room.RemovePlayer(playerId);
+            _connectionTracker.RemovePlayerHeartbeat(playerId);
             _roomRepo.Update(room);
             _roomRepo.SaveChanges();
         }

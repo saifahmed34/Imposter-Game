@@ -421,7 +421,8 @@ Requests/
  microsoft.visualstudio.solutionpersistence/1.0.52/lib/net8.0/Microsoft.VisualStudio.SolutionPersistence.dll
  mono.texttemplating/3.0.0/lib/net6.0/Mono.TextTemplating.dll
  newtonsoft.json/13.0.3/lib/net6.0/Newtonsoft.Json.dll
- npgsql/10.0.2/lib/net10.0/Npgsql.dll
+ npgsql.entityframeworkcore.postgresql/10.0.0/lib/net10.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
+ npgsql/10.0.0/lib/net10.0/Npgsql.dll
  swashbuckle.aspnetcore.swagger/10.1.2/lib/net10.0/Swashbuckle.AspNetCore.Swagger.dll
  swashbuckle.aspnetcore.swaggergen/10.1.2/lib/net10.0/Swashbuckle.AspNetCore.SwaggerGen.dll
  swashbuckle.aspnetcore.swaggerui/10.1.2/lib/net10.0/Swashbuckle.AspNetCore.SwaggerUI.dll

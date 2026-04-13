@@ -1,5 +1,5 @@
 // API configuration - update this to match your backend
-export const API_BASE_URL = "https://dwtcck0w-5289.euw.devtunnels.ms"; // Change this to your actual API URL
+export const API_BASE_URL = "https://impostergame-adcjgcafg3b0hpct.germanywestcentral-01.azurewebsites.net"; // Change this to your actual API URL
 
 export async function parseResponse(response: Response) {
   const text = await response.text();

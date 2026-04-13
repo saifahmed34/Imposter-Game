@@ -4,5 +4,6 @@
     <ActiveDebugProfile>Container (Dockerfile)</ActiveDebugProfile>
     <Controller_SelectedScaffolderID>ApiControllerEmptyScaffolder</Controller_SelectedScaffolderID>
     <Controller_SelectedScaffolderCategoryPath>root/Common/Api</Controller_SelectedScaffolderCategoryPath>
+    <NameOfLastUsedPublishProfile>C:\Users\saifa\Desktop\Imposter-Game\Imposter Game\src\ImposterGame.API\Properties\PublishProfiles\impostergame - Web Deploy.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>
