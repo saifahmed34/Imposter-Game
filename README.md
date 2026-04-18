@@ -20,8 +20,11 @@ A real-time multiplayer **Imposter Game** built with modern web technologies. Pl
 ## 🚀 Features
 
 - ✅ **Create & Join Game Rooms** - Host or join games with unique room codes
+- ✅ **Smart Room Management** - Automatically cleans up empty game rooms to optimize resource usage and preserves player sessions on game resets
 - ✅ **Random Impostor Selection** - Automatically assigns one player as the imposter
 - ✅ **Secret Word System** - All players except the imposter see the secret word
+- ✅ **Randomized Game Mode** - Start games instantly with a random word from any category without manual selection
+- ✅ **Anti-Cheat Mechanism** - Enhanced data security ensures roles and secret words are strictly hidden from network traffic to prevent inspecting payloads
 - ✅ **Real-time Updates** - SignalR enables live player-to-player communication
 - ✅ **Voting Phase** - Players vote to eliminate suspected impostors
 - ✅ **Vote Resolution** - Automatic logic determines game winner
@@ -207,7 +210,10 @@ dotnet publish -c Release -o ./publish
 | `POST` | `/api/room` | Create a new game room |
 | `GET` | `/api/room/{roomId}` | Get room details & player list |
 | `POST` | `/api/room/{roomId}/join` | Join an existing room |
-| `POST` | `/api/room/{roomId}/start` | Start the game |
+| `POST` | `/api/room/{roomId}/leave` | Leave an active room |
+| `POST` | `/api/room/{roomId}/start` | Start the game (optional category mapping or random) |
+| `POST` | `/api/room/{roomId}/start-vote` | Manually begin the voting phase |
+| `POST` | `/api/room/{roomId}/reset` | Reset the room for another round with existing players |
 
 ### Voting
 
