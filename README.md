@@ -2,6 +2,10 @@
 
 A real-time multiplayer **Imposter Game** built with modern web technologies. Players must identify the imposter in the room while the imposter tries to blend in without knowing the secret word.
 
+## 🌐 Live Demo
+
+🎮 **Play Now:** https://impostergamees.netlify.app/
+
 ## 📋 Table of Contents
 
 - [Features](#-features)
