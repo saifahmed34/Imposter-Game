@@ -4,7 +4,7 @@ A real-time multiplayer **Imposter Game** built with modern web technologies. Pl
 
 ## 🌐 Live Demo
 
-🎮 **Play Now:** https://impostergamees.netlify.app/
+🎮 **Play Now:** https://impostergame-gilt.vercel.app/
 
 ## 📋 Table of Contents
 
